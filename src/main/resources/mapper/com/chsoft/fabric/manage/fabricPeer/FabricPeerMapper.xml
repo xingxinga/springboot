@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chsoft.fabric.manage.fabricPeer.dao.FabricPeerMapper">
+  <resultMap id="BaseResultMap" type="com.chsoft.fabric.manage.fabricPeer.entity.FabricPeer">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="peer_name" jdbcType="VARCHAR" property="peerName" />
+    <result column="peer_location" jdbcType="VARCHAR" property="peerLocation" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, peer_name, peer_location, org_id
+  </sql>
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from fabric_peer
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fabric_peer
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from fabric_peer
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chsoft.fabric.manage.fabricPeer.entity.FabricPeer">
+    <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+      select  replace(uuid(),'-','')   from dual
+    </selectKey>
+    insert into fabric_peer (id, peer_name, peer_location, 
+      org_id)
+    values (#{id,jdbcType=VARCHAR}, #{peerName,jdbcType=VARCHAR}, #{peerLocation,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chsoft.fabric.manage.fabricPeer.entity.FabricPeer">
+    insert into fabric_peer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="peerName != null">
+        peer_name,
+      </if>
+      <if test="peerLocation != null">
+        peer_location,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="peerName != null">
+        #{peerName,jdbcType=VARCHAR},
+      </if>
+      <if test="peerLocation != null">
+        #{peerLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chsoft.fabric.manage.fabricPeer.entity.FabricPeer">
+    update fabric_peer
+    <set>
+      <if test="peerName != null">
+        peer_name = #{peerName,jdbcType=VARCHAR},
+      </if>
+      <if test="peerLocation != null">
+        peer_location = #{peerLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chsoft.fabric.manage.fabricPeer.entity.FabricPeer">
+    update fabric_peer
+    set peer_name = #{peerName,jdbcType=VARCHAR},
+      peer_location = #{peerLocation,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>myLife</title>
+		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+		<link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+		<link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+		<!--图片上传-->
+		<link href="../../dist/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../../dist/css/pages/index.css"/>
+		<!--弹框-->
+		<link rel="stylesheet" href="../../dist/css/sweetalert.css" />
+		<!-- bootstrap wysihtml5 - text editor 富文本框-->
+  		<link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+						
+			<div class="content-wrapper">
+				<section class="content">
+					<div class="update-tourist-div">
+						<!--添加内容-->
+						<form class="form-horizontal">
+							<div class="box-body">
+								
+								<!--标题-->
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label"><span>*</span>标题</label>
+	
+									<div class="col-sm-4">
+										<input type="text" class="form-control js-title" id="" placeholder="请输入标题，建议20字以内">
+									</div>
+								</div>
+								<!--关键词-->
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label"><span>*</span>关键词</label>
+	
+									<div class="col-sm-4">
+										<input type="text" class="form-control js-title" id="" placeholder="建议1~3个词语">
+									</div>
+								</div>
+								
+								<!--推荐指数-->
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label"><span>*</span>推荐指数</label>
+	
+									<div class="col-sm-6 update-mylife-heart js_update_mylife">
+										<i class="fa fa-fw fa-heart-o"></i>
+										<i class="fa fa-fw fa-heart-o"></i>
+										<i class="fa fa-fw fa-heart-o"></i>
+										<i class="fa fa-fw fa-heart-o"></i>
+										<i class="fa fa-fw fa-heart-o"></i>
+									</div>
+								</div>	
+								
+								<!--内容-->
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label"><span>*</span>内容分享</label>
+	
+									<div class="col-sm-8">
+										<textarea id="editor1" name="editor1" rows="10" cols="80" class="js-stroy">
+                                            This is my textarea.
+                    					</textarea>
+									</div>
+								</div>
+								
+								<!--图片-->
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label">上传图片</label>
+	
+									<div class="col-sm-8">
+										<input id="file-5" class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
+									</div>
+								</div>
+								
+								<!--视频-->
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label">上传视频</label>
+	
+									<div class="col-sm-6">
+										<input id="file-5" class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
+									</div>
+								</div>
+								<!--视频-->
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label">公开</label>
+	
+									<div class="col-sm-2">
+										<select class="form-control">
+						                    <option>公开</option>
+						                    <option>不公开</option>
+						                </select>
+									</div>
+								</div>
+								<a  class="btn btn-block btn-default update-mylife-return" href="javascript:history.back(-1)">返回</a>
+								<button type="button" class="btn btn-block btn-success update-tourist-but js-save">保存</button>
+								
+							</div>
+							
+						</form>
+					</div>
+							
+				</section>
+			</div>
+			
+		</div>
+		
+		<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../dist/js/adminlte.min.js"></script>
+		<script src="../../dist/js/header.js"></script>
+		<!--图片上传-->
+		<script src="../../dist/js/fileinput.min.js" type="text/javascript"></script>
+		<script src="../../dist/js/fileinput_locale_zh.js"></script>
+		<!--弹框-->
+		<script src="../../dist/js/sweetalert.min.js"></script>
+		<!-- Bootstrap WYSIHTML5 富文本框-->
+		<!-- CK Editor -->
+		<script src="../../bower_components/ckeditor/ckeditor.js"></script>
+		<script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+		<script>
+		    $(function () {
+			    // Replace the <textarea id="editor1"> with a CKEditor
+			    // instance, using default configuration.
+			    CKEDITOR.replace('editor1')
+			    //bootstrap WYSIHTML5 - text editor
+			    $('.textarea').wysihtml5();
+			    //点击保存
+			    $('.js-save').click(function(){
+			    	if($('.js-title').val()){
+			    		swal("","请填写标题","error");
+			    	}else if($('.js-intro').val()){
+			    		swal("","请填写简介","error");
+			    	}else if($('.js-stroy').val()){
+			    		swal("","请说出你的故事","error");
+			    	}else{
+			    		//保存~保存
+			    	}
+			    })
+			    //移动星星
+			    $('.js_update_mylife i').each(function(index,elem){
+			    	$(elem).click(function(){
+			    		//除自己之外，往上不显示，往下都显示
+			    		$('.js_update_mylife i').each(function(index2,elem2){
+			    			if(index2<=index){
+			    				$(this).removeClass('fa-heart-o').addClass('fa-heart update-mylife-i');
+			    			}else{
+			    				$(this).removeClass('fa-heart update-mylife-i').addClass('fa-heart-o');
+			    			}
+			    		})
+			    	})
+			    })
+		    })
+		</script>
+	</body>
+
+</html>

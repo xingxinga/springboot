@@ -1,0 +1,13 @@
+/*可以在这里添加你自己的css*/
+body.view{
+    margin: 15px;
+    margin-right: 20px;
+}
+.video_iframe{
+    width: 100% !important;
+    max-width: 100%;
+}
+p img[title=onlineImg],p img[title=uploadImg]{
+    width:100% !important;
+    max-width: 100%;
+}
