@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>tourist</title>
+		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+		<link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+		<link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" type="text/css" href="../../dist/css/pages/index.css"/>
+		<!--弹框-->
+		<link rel="stylesheet" href="../../dist/css/sweetalert.css" />
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+						
+			<div class="content-wrapper">
+				<section class="content">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="box tech-box">
+								<div class="box-header">
+									<h3 class="box-title">书籍<span style="font-size:12px;">（浏览次数：33）</span></h3>
+
+									<div class="box-tools">
+										<div class="input-group input-group-sm" style="width: 150px;right: 160px;">
+											<input type="text" name="table_search" class="form-control" placeholder="名称">
+
+											<div class="input-group-btn">
+												<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+											</div>
+										</div>
+										<!--添加-->
+										<a  class="btn btn-block btn-info tech-box-add js_add_link" href="updateBooks.html">添加书籍</a>
+									</div>
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body table-responsive no-padding">
+									<table class="table table-hover life-table">
+										<tbody>
+											<tr>
+												<th>ID</th>
+												<th>书籍名称</th>
+												<th>推荐指数</th>
+												<th>创建时间</th>
+												<th>操作</th>
+											</tr>
+											<tr>
+												<td>183</td>
+												<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+												<td>
+													<i class="fa fa-fw fa-heart"></i>
+													<i class="fa fa-fw fa-heart"></i>
+												</td>
+												<td>11-7-2014</td>
+												<td class="tech-box-operate">
+													<a href="updateBooks.html">修改</a>
+													<span class="js_link_del">删除</span>
+												</td>
+												
+											</tr>
+											<tr>
+												<td>183</td>
+												<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+												<td>
+													<i class="fa fa-fw fa-heart"></i>
+													<i class="fa fa-fw fa-heart"></i>
+													<i class="fa fa-fw fa-heart"></i>
+													<i class="fa fa-fw fa-heart"></i>
+												</td>
+												<td>11-7-2014</td>
+												<td class="tech-box-operate">
+													<a href="updateBooks.html">修改</a>
+													<span class="js_link_del">删除</span>
+												</td>
+												
+											</tr>
+											<tr>
+												<td>183</td>
+												<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+												<td>
+													<i class="fa fa-fw fa-heart"></i>
+												</td>
+												<td>11-7-2014</td>
+												<td class="tech-box-operate">
+													<a href="updateBooks.html">修改</a>
+													<span class="js_link_del">删除</span>
+												</td>
+												
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- /.box-body -->
+							</div>
+							<!-- /.box -->
+						</div>
+						
+					</div>
+				</section>
+			</div>
+			
+		</div>
+		
+		<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../dist/js/adminlte.min.js"></script>
+		<script src="../../dist/js/header.js"></script>
+		<!--弹框-->
+		<script src="../../dist/js/sweetalert.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				//删除链接
+				$('.js_link_del').click(function(){
+					swal({ 
+						title: "", 
+						text: "确定删除吗！", 
+						type: "warning",
+						showCancelButton: true, 
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: "确定", 
+						closeOnConfirm: false
+					});
+				})
+			})
+		</script>
+	</body>
+
+</html>

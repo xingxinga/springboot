@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chsoft.fabric.manage.fabricChaincode.dao.FabricChaincodeMapper">
+  <resultMap id="BaseResultMap" type="com.chsoft.fabric.manage.fabricChaincode.entity.FabricChaincode">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="chaincode_name" jdbcType="VARCHAR" property="chaincodeName" />
+    <result column="chaincode_path" jdbcType="VARCHAR" property="chaincodePath" />
+    <result column="chaincode_filePath" jdbcType="VARCHAR" property="chaincodeFilepath" />
+    <result column="chaincode_version" jdbcType="VARCHAR" property="chaincodeVersion" />
+    <result column="invoke_wati_time" jdbcType="INTEGER" property="invokeWatiTime" />
+    <result column="deploy_wati_time" jdbcType="INTEGER" property="deployWatiTime" />
+    <result column="endorsement_policy_file_path" jdbcType="VARCHAR" property="endorsementPolicyFilePath" />
+    <result column="instantiate_policy_file_path" jdbcType="VARCHAR" property="instantiatePolicyFilePath" />
+    <result column="transaction_name" jdbcType="VARCHAR" property="transactionName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, chaincode_name, chaincode_path, chaincode_filePath, chaincode_version, invoke_wati_time, 
+    deploy_wati_time, endorsement_policy_file_path, instantiate_policy_file_path, transaction_name
+  </sql>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from fabric_chaincode
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fabric_chaincode
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from fabric_chaincode
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chsoft.fabric.manage.fabricChaincode.entity.FabricChaincode">
+    <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+      select  replace(uuid(),'-','')   from dual
+    </selectKey>
+    insert into fabric_chaincode (id, chaincode_name, chaincode_path, 
+      chaincode_filePath, chaincode_version, invoke_wati_time, 
+      deploy_wati_time, endorsement_policy_file_path, 
+      instantiate_policy_file_path, transaction_name
+      )
+    values (#{id,jdbcType=VARCHAR}, #{chaincodeName,jdbcType=VARCHAR}, #{chaincodePath,jdbcType=VARCHAR}, 
+      #{chaincodeFilepath,jdbcType=VARCHAR}, #{chaincodeVersion,jdbcType=VARCHAR}, #{invokeWatiTime,jdbcType=INTEGER}, 
+      #{deployWatiTime,jdbcType=INTEGER}, #{endorsementPolicyFilePath,jdbcType=VARCHAR}, 
+      #{instantiatePolicyFilePath,jdbcType=VARCHAR}, #{transactionName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chsoft.fabric.manage.fabricChaincode.entity.FabricChaincode">
+    insert into fabric_chaincode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="chaincodeName != null">
+        chaincode_name,
+      </if>
+      <if test="chaincodePath != null">
+        chaincode_path,
+      </if>
+      <if test="chaincodeFilepath != null">
+        chaincode_filePath,
+      </if>
+      <if test="chaincodeVersion != null">
+        chaincode_version,
+      </if>
+      <if test="invokeWatiTime != null">
+        invoke_wati_time,
+      </if>
+      <if test="deployWatiTime != null">
+        deploy_wati_time,
+      </if>
+      <if test="endorsementPolicyFilePath != null">
+        endorsement_policy_file_path,
+      </if>
+      <if test="instantiatePolicyFilePath != null">
+        instantiate_policy_file_path,
+      </if>
+      <if test="transactionName != null">
+        transaction_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="chaincodeName != null">
+        #{chaincodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="chaincodePath != null">
+        #{chaincodePath,jdbcType=VARCHAR},
+      </if>
+      <if test="chaincodeFilepath != null">
+        #{chaincodeFilepath,jdbcType=VARCHAR},
+      </if>
+      <if test="chaincodeVersion != null">
+        #{chaincodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="invokeWatiTime != null">
+        #{invokeWatiTime,jdbcType=INTEGER},
+      </if>
+      <if test="deployWatiTime != null">
+        #{deployWatiTime,jdbcType=INTEGER},
+      </if>
+      <if test="endorsementPolicyFilePath != null">
+        #{endorsementPolicyFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="instantiatePolicyFilePath != null">
+        #{instantiatePolicyFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionName != null">
+        #{transactionName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chsoft.fabric.manage.fabricChaincode.entity.FabricChaincode">
+    update fabric_chaincode
+    <set>
+      <if test="chaincodeName != null">
+        chaincode_name = #{chaincodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="chaincodePath != null">
+        chaincode_path = #{chaincodePath,jdbcType=VARCHAR},
+      </if>
+      <if test="chaincodeFilepath != null">
+        chaincode_filePath = #{chaincodeFilepath,jdbcType=VARCHAR},
+      </if>
+      <if test="chaincodeVersion != null">
+        chaincode_version = #{chaincodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="invokeWatiTime != null">
+        invoke_wati_time = #{invokeWatiTime,jdbcType=INTEGER},
+      </if>
+      <if test="deployWatiTime != null">
+        deploy_wati_time = #{deployWatiTime,jdbcType=INTEGER},
+      </if>
+      <if test="endorsementPolicyFilePath != null">
+        endorsement_policy_file_path = #{endorsementPolicyFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="instantiatePolicyFilePath != null">
+        instantiate_policy_file_path = #{instantiatePolicyFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionName != null">
+        transaction_name = #{transactionName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chsoft.fabric.manage.fabricChaincode.entity.FabricChaincode">
+    update fabric_chaincode
+    set chaincode_name = #{chaincodeName,jdbcType=VARCHAR},
+      chaincode_path = #{chaincodePath,jdbcType=VARCHAR},
+      chaincode_filePath = #{chaincodeFilepath,jdbcType=VARCHAR},
+      chaincode_version = #{chaincodeVersion,jdbcType=VARCHAR},
+      invoke_wati_time = #{invokeWatiTime,jdbcType=INTEGER},
+      deploy_wati_time = #{deployWatiTime,jdbcType=INTEGER},
+      endorsement_policy_file_path = #{endorsementPolicyFilePath,jdbcType=VARCHAR},
+      instantiate_policy_file_path = #{instantiatePolicyFilePath,jdbcType=VARCHAR},
+      transaction_name = #{transactionName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

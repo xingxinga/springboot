@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chsoft.fabric.manage.fabricUser.dao.FabricUserMapper">
+  <resultMap id="BaseResultMap" type="com.chsoft.fabric.manage.fabricUser.entity.FabricUser">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="privateKeyFilePath" jdbcType="VARCHAR" property="privatekeyfilepath" />
+    <result column="certificateFile" jdbcType="VARCHAR" property="certificatefile" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userName, privateKeyFilePath, certificateFile, org_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fabric_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from fabric_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chsoft.fabric.manage.fabricUser.entity.FabricUser">
+    insert into fabric_user (id, userName, privateKeyFilePath, 
+      certificateFile, org_id)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{privatekeyfilepath,jdbcType=VARCHAR}, 
+      #{certificatefile,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chsoft.fabric.manage.fabricUser.entity.FabricUser">
+    insert into fabric_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="privatekeyfilepath != null">
+        privateKeyFilePath,
+      </if>
+      <if test="certificatefile != null">
+        certificateFile,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="privatekeyfilepath != null">
+        #{privatekeyfilepath,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatefile != null">
+        #{certificatefile,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chsoft.fabric.manage.fabricUser.entity.FabricUser">
+    update fabric_user
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="privatekeyfilepath != null">
+        privateKeyFilePath = #{privatekeyfilepath,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatefile != null">
+        certificateFile = #{certificatefile,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chsoft.fabric.manage.fabricUser.entity.FabricUser">
+    update fabric_user
+    set userName = #{username,jdbcType=VARCHAR},
+      privateKeyFilePath = #{privatekeyfilepath,jdbcType=VARCHAR},
+      certificateFile = #{certificatefile,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
