@@ -12,7 +12,8 @@ import java.util.List;
 
 /**
  * Created by lixing on 2018/11/13.
- *
+ * fabric客户端创建器
+ * 通过aop的方式设置fabric客户端的信息
  */
 public interface FabricCreateClient {
 

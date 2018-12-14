@@ -107,6 +107,12 @@ public class Util {
 
     }
 
+    /**
+     * 判断执行fabric操作是否成功
+     * @param list 返回的数据信息
+     * @return
+     * @throws Exception
+     */
     public static boolean isSuccess (Collection<ProposalResponse> list) throws Exception{
         for( ProposalResponse proposalResponse :list){
             if(proposalResponse.getStatus() == ChaincodeResponse.Status.SUCCESS){
@@ -118,7 +124,12 @@ public class Util {
         return false;
     }
 
-
+    /**
+     * 获取执行fabric操作后的结果
+     * @param list
+     * @return
+     * @throws Exception
+     */
     public static String getResult(Collection<ProposalResponse> list) throws Exception{
         String result = null;
         for( ProposalResponse proposalResponse :list){
