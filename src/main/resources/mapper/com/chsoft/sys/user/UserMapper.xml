@@ -11,7 +11,7 @@
   </sql>
   <select id="getPassword" parameterType="java.lang.String" resultType="java.lang.String">
       select password
-        from USER
+        from user
         where userName = #{username}
   </select>
 
@@ -24,7 +24,7 @@
           from user_role
         where user_id = (
           select id
-            from USER
+            from user
           where userName = #{userName}
         )
       )
