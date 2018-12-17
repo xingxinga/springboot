@@ -28,27 +28,27 @@ public final class AtomicBroadcastGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  @java.lang.Deprecated // Use {@link #getBroadcastMethod()} instead. 
+  @Deprecated // Use {@link #getBroadcastMethod()} instead.
   public static final io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope,
-      org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse> METHOD_BROADCAST = getBroadcastMethodHelper();
+      Ab.BroadcastResponse> METHOD_BROADCAST = getBroadcastMethodHelper();
 
   private static volatile io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope,
-      org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse> getBroadcastMethod;
+      Ab.BroadcastResponse> getBroadcastMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope,
-      org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse> getBroadcastMethod() {
+      Ab.BroadcastResponse> getBroadcastMethod() {
     return getBroadcastMethodHelper();
   }
 
   private static io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope,
-      org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse> getBroadcastMethodHelper() {
-    io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope, org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse> getBroadcastMethod;
+      Ab.BroadcastResponse> getBroadcastMethodHelper() {
+    io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope, Ab.BroadcastResponse> getBroadcastMethod;
     if ((getBroadcastMethod = AtomicBroadcastGrpc.getBroadcastMethod) == null) {
       synchronized (AtomicBroadcastGrpc.class) {
         if ((getBroadcastMethod = AtomicBroadcastGrpc.getBroadcastMethod) == null) {
           AtomicBroadcastGrpc.getBroadcastMethod = getBroadcastMethod = 
-              io.grpc.MethodDescriptor.<org.hyperledger.fabric.protos.common.Common.Envelope, org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse>newBuilder()
+              io.grpc.MethodDescriptor.<org.hyperledger.fabric.protos.common.Common.Envelope, Ab.BroadcastResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(
                   "orderer.AtomicBroadcast", "Broadcast"))
@@ -56,7 +56,7 @@ public final class AtomicBroadcastGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   org.hyperledger.fabric.protos.common.Common.Envelope.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse.getDefaultInstance()))
+                  Ab.BroadcastResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new AtomicBroadcastMethodDescriptorSupplier("Broadcast"))
                   .build();
           }
@@ -65,27 +65,27 @@ public final class AtomicBroadcastGrpc {
      return getBroadcastMethod;
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  @java.lang.Deprecated // Use {@link #getDeliverMethod()} instead. 
+  @Deprecated // Use {@link #getDeliverMethod()} instead.
   public static final io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope,
-      org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse> METHOD_DELIVER = getDeliverMethodHelper();
+      Ab.DeliverResponse> METHOD_DELIVER = getDeliverMethodHelper();
 
   private static volatile io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope,
-      org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse> getDeliverMethod;
+      Ab.DeliverResponse> getDeliverMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope,
-      org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse> getDeliverMethod() {
+      Ab.DeliverResponse> getDeliverMethod() {
     return getDeliverMethodHelper();
   }
 
   private static io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope,
-      org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse> getDeliverMethodHelper() {
-    io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope, org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse> getDeliverMethod;
+      Ab.DeliverResponse> getDeliverMethodHelper() {
+    io.grpc.MethodDescriptor<org.hyperledger.fabric.protos.common.Common.Envelope, Ab.DeliverResponse> getDeliverMethod;
     if ((getDeliverMethod = AtomicBroadcastGrpc.getDeliverMethod) == null) {
       synchronized (AtomicBroadcastGrpc.class) {
         if ((getDeliverMethod = AtomicBroadcastGrpc.getDeliverMethod) == null) {
           AtomicBroadcastGrpc.getDeliverMethod = getDeliverMethod = 
-              io.grpc.MethodDescriptor.<org.hyperledger.fabric.protos.common.Common.Envelope, org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse>newBuilder()
+              io.grpc.MethodDescriptor.<org.hyperledger.fabric.protos.common.Common.Envelope, Ab.DeliverResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(
                   "orderer.AtomicBroadcast", "Deliver"))
@@ -93,7 +93,7 @@ public final class AtomicBroadcastGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   org.hyperledger.fabric.protos.common.Common.Envelope.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse.getDefaultInstance()))
+                  Ab.DeliverResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new AtomicBroadcastMethodDescriptorSupplier("Deliver"))
                   .build();
           }
@@ -135,7 +135,7 @@ public final class AtomicBroadcastGrpc {
      * </pre>
      */
     public io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.common.Common.Envelope> broadcast(
-        io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<Ab.BroadcastResponse> responseObserver) {
       return asyncUnimplementedStreamingCall(getBroadcastMethodHelper(), responseObserver);
     }
 
@@ -145,25 +145,25 @@ public final class AtomicBroadcastGrpc {
      * </pre>
      */
     public io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.common.Common.Envelope> deliver(
-        io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<Ab.DeliverResponse> responseObserver) {
       return asyncUnimplementedStreamingCall(getDeliverMethodHelper(), responseObserver);
     }
 
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+    @Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getBroadcastMethodHelper(),
             asyncBidiStreamingCall(
               new MethodHandlers<
                 org.hyperledger.fabric.protos.common.Common.Envelope,
-                org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse>(
+                Ab.BroadcastResponse>(
                   this, METHODID_BROADCAST)))
           .addMethod(
             getDeliverMethodHelper(),
             asyncBidiStreamingCall(
               new MethodHandlers<
                 org.hyperledger.fabric.protos.common.Common.Envelope,
-                org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse>(
+                Ab.DeliverResponse>(
                   this, METHODID_DELIVER)))
           .build();
     }
@@ -181,7 +181,7 @@ public final class AtomicBroadcastGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected AtomicBroadcastStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new AtomicBroadcastStub(channel, callOptions);
@@ -193,7 +193,7 @@ public final class AtomicBroadcastGrpc {
      * </pre>
      */
     public io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.common.Common.Envelope> broadcast(
-        io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<Ab.BroadcastResponse> responseObserver) {
       return asyncBidiStreamingCall(
           getChannel().newCall(getBroadcastMethodHelper(), getCallOptions()), responseObserver);
     }
@@ -204,7 +204,7 @@ public final class AtomicBroadcastGrpc {
      * </pre>
      */
     public io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.common.Common.Envelope> deliver(
-        io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<Ab.DeliverResponse> responseObserver) {
       return asyncBidiStreamingCall(
           getChannel().newCall(getDeliverMethodHelper(), getCallOptions()), responseObserver);
     }
@@ -222,7 +222,7 @@ public final class AtomicBroadcastGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected AtomicBroadcastBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new AtomicBroadcastBlockingStub(channel, callOptions);
@@ -241,7 +241,7 @@ public final class AtomicBroadcastGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected AtomicBroadcastFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new AtomicBroadcastFutureStub(channel, callOptions);
@@ -264,8 +264,8 @@ public final class AtomicBroadcastGrpc {
       this.methodId = methodId;
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         default:
@@ -273,17 +273,17 @@ public final class AtomicBroadcastGrpc {
       }
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_BROADCAST:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.broadcast(
-              (io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.orderer.Ab.BroadcastResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<Ab.BroadcastResponse>) responseObserver);
         case METHODID_DELIVER:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.deliver(
-              (io.grpc.stub.StreamObserver<org.hyperledger.fabric.protos.orderer.Ab.DeliverResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<Ab.DeliverResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -294,12 +294,12 @@ public final class AtomicBroadcastGrpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     AtomicBroadcastBaseDescriptorSupplier() {}
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return org.hyperledger.fabric.protos.orderer.Ab.getDescriptor();
+      return Ab.getDescriptor();
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("AtomicBroadcast");
     }
@@ -319,7 +319,7 @@ public final class AtomicBroadcastGrpc {
       this.methodName = methodName;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }
