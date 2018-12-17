@@ -11,9 +11,9 @@
 <aside class="main-sidebar">
     <section class="sidebar">
         <div class="user-panel">
-            <div class="pull-left image" onclick="ToPersonSetting()"><img src="/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"></div>
+            <div class="pull-left image" onclick="ToPersonSetting()"><img src="${contextStatic}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"></div>
             <div class="pull-left info">
-                [<shiro:principal/>] <a href="/logout"> 注销</a></div>
+                [<shiro:principal/>] <a href="${pageContext.request.contextPath}/logout"> 注销</a></div>
         </div>
         <ul class="sidebar-menu" data-widget="tree">
             <shiro:hasRole name="admin">
@@ -23,10 +23,10 @@
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/local/peer">peer节点和用户信息</a></li>
-                        <li><a href="/local/orderer">orderer节点列表</a></li>
-                        <li><a href="/local/channel">通道列表</a></li>
-                        <li><a href="/local/chaincodeInstalled">已安装链码列表</a></li>
+                        <li><a href="${contextPath}/local/peer">peer节点和用户信息</a></li>
+                        <li><a href="${contextPath}/local/orderer">orderer节点列表</a></li>
+                        <li><a href="${contextPath}/local/channel">通道列表</a></li>
+                        <li><a href="${contextPath}/local/chaincodeInstalled">已安装链码列表</a></li>
                     </ul>
                 </li>
                 <%--<li class="treeview">
@@ -35,12 +35,12 @@
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/execute/toCreateChannel">新建通道</a></li>
-                        <li><a href="/execute/toJoinChannel">加入通道</a></li>
-                        <li><a href="/execute/toInstall">安装链码</a></li>
-                        <li><a href="/execute/toInstantiate">实例化链码</a></li>
-                        <li><a href="/execute/toQueryChannel">链码Query</a></li>
-                        <li><a href="/execute/toInvokeChannel">链码Invoke</a></li>
+                        <li><a href="${contextPath}/execute/toCreateChannel">新建通道</a></li>
+                        <li><a href="${contextPath}/execute/toJoinChannel">加入通道</a></li>
+                        <li><a href="${contextPath}/execute/toInstall">安装链码</a></li>
+                        <li><a href="${contextPath}/execute/toInstantiate">实例化链码</a></li>
+                        <li><a href="${contextPath}/execute/toQueryChannel">链码Query</a></li>
+                        <li><a href="${contextPath}/execute/toInvokeChannel">链码Invoke</a></li>
                     </ul>
                 </li>--%>
                 <li class="treeview">
@@ -49,10 +49,10 @@
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/fabricPeer/list">peer节点管理</a></li>
-                        <li><a href="/fabricOrg/list">组织管理</a></li>
-                        <li><a href="/fabricChannel/list">通道管理</a></li>
-                        <li><a href="/fabricChaincode/list">链码管理</a></li>
+                        <li><a href="${contextPath}/fabricPeer/list">peer节点管理</a></li>
+                        <li><a href="${contextPath}/fabricOrg/list">组织管理</a></li>
+                        <li><a href="${contextPath}/fabricChannel/list">通道管理</a></li>
+                        <li><a href="${contextPath}/fabricChaincode/list">链码管理</a></li>
                     </ul>
                 </li>
 
@@ -63,8 +63,8 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/invoice/list">发票列表</a></li>
-                    <li><a href="/invoice/tofabricGetInvoice">发票验证</a></li>
+                    <li><a href="${pageContext.request.contextPath}/invoice/list">发票列表</a></li>
+                    <li><a href="${pageContext.request.contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
                 </ul>
             </li>
             <li>

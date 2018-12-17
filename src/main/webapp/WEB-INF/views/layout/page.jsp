@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
-    <%@ include file="head.jsp" %>
-    <%@ include file="side.jsp" %>
-
+<%@ include file="tag.jsp" %>
+<%@ include file="js.jsp" %>
+<%@ include file="css.jsp" %>
+<%@ include file="head.jsp" %>
+<%@ include file="side.jsp" %>
 </body>
 
 </html>
