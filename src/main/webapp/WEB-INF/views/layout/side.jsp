@@ -55,23 +55,38 @@
                         <li><a href="${contextPath}/fabricChaincode/list">链码管理</a></li>
                     </ul>
                 </li>
-
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-paw"></i> <span>证书平台</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="${contextPath}/affiliation/list">用户注册</a></li>
+                        <li><a href="${contextPath}/affiliation/list">证书列表</a></li>
+                        <li><a href="${contextPath}/affiliation/list">组织管理</a></li>
+                    </ul>
+                </li>
             </shiro:hasRole>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-paw"></i> <span>发票管理</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="${pageContext.request.contextPath}/invoice/list">发票列表</a></li>
-                    <li><a href="${pageContext.request.contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="../comment/commentManage.html">
-                    <i class="fa fa-paw"></i><span>评论管理</span>
-                </a>
-            </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-paw"></i> <span>发票管理</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="${pageContext.request.contextPath}/invoice/list">发票列表</a></li>
+                        <li><a href="${pageContext.request.contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-paw"></i> <span>证书管理</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="${pageContext.request.contextPath}/invoice/list">发票列表</a></li>
+                        <li><a href="${pageContext.request.contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
+                    </ul>
+                </li>
         </ul>
     </section>
 

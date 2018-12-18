@@ -32,6 +32,7 @@ logging:
 
 system:
   fabric:
+    attribute: "local"
     local:
       peer:
         peerName: "peer0.org1.example.com"
@@ -59,6 +60,13 @@ system:
           domainName: ""
           location: ""
           ordererName: ""
-
+  fabric_ca:
+    local:
+      adminUser:
+        name: "admin"
+        password: "adminpw"
+      serverInfo:
+        ip: "http://192.168.15.129:7054"
+        caName: "client"
 
 

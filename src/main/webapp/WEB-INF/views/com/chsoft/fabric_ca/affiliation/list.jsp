@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>发票列表</title>
+    <title>组织列表</title>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -18,7 +18,7 @@
                     <div class="col-xs-12">
                         <div class="box tech-box">
                             <div class="box-header">
-                                <h3 class="box-title">发票列表<span style="font-size:12px;"></span></h3>
+                                <h3 class="box-title">组织列表<span style="font-size:12px;"></span></h3>
 
                                 <div class="box-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;right: 160px;">
@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <!--添加-->
-                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="${contextPath}/invoice/edit">添加发票</a>
+                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="${contextPath}/affiliation/toCreate">添加组织</a>
                                 </div>
                             </div>
                             <!-- /.box-header -->
@@ -37,31 +37,14 @@
                                 <table class="table table-hover life-table">
                                     <tbody>
                                     <tr>
-                                        <th>发票代码</th>
-                                        <th>发票号码</th>
-                                        <th>总额</th>
-                                        <th>税额</th>
-                                        <th>含税金额</th>
-                                        <th>发票归属方</th>
-                                        <th>发票买方</th>
-                                        <th>发票卖方</th>
-                                        <th>发票创建时间</th>
+                                        <th>组织名称</th>
                                         <th>操作</th>
                                     </tr>
-                                    <c:forEach items="${invoiceList}" var="invoice">
+                                    <c:forEach items="${affiliationList}" var="affiliation">
                                         <tr>
-                                            <td>${invoice.invoiceCode}</td>
-                                            <td>${invoice.invoiceNo}</td>
-                                            <td>${invoice.invoiceAmount}</td>
-                                            <td>${invoice.invoiceTaxtotal}</td>
-                                            <td>${invoice.invoiceTotal}</td>
-                                            <td>${invoice.invoiceAttribution}</td>
-                                            <td>${invoice.invoiceBuyer}</td>
-                                            <td>${invoice.invoiceSeller}</td>
-                                            <td>${invoice.invoiceCreatedate}</td>
+                                            <td>${affiliation.name}</td>
                                             <td>
-                                                <a href="${contextPath}/invoice/edit?id=${invoice.id}">查看</a>
-                                                <a href="${contextPath}/invoice/fabricUploadInvoice?id=${invoice.id}">发票信息上链</a>
+                                                <a href="#">删除组织</a>
                                             </td>
                                         </tr>
                                     </c:forEach>
