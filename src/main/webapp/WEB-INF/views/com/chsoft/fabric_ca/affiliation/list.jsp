@@ -44,7 +44,9 @@
                                         <tr>
                                             <td>${affiliation.name}</td>
                                             <td>
-                                                <a href="#">删除组织</a>
+                                                <a href="${contextPath}/affiliation/toUpdate?affiliationName=${affiliation.name}">修改</a>
+                                                <a href="${contextPath}/affiliation/delete?affiliationName=${affiliation.name}&force=false">删除</a>
+                                                <a href="${contextPath}/affiliation/delete?affiliationName=${affiliation.name}&force=true">删除及子组织</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

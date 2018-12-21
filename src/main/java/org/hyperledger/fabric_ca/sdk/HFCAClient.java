@@ -228,7 +228,7 @@ public class HFCAClient {
      *                   </ul>
      * @throws MalformedURLException
      */
-    HFCAClient(String caName, String url, Properties properties) throws MalformedURLException {
+    public HFCAClient(String caName, String url, Properties properties) throws MalformedURLException {
         logger.debug(format("new HFCAClient %s", url));
         this.url = url;
 
@@ -1461,5 +1461,37 @@ public class HFCAClient {
         return stringWriter.toString();
     }
 
+
+    public boolean createAffiliation(String affiliationName,User registrar) throws Exception {
+        String body = "{\"name\":\""+affiliationName + "\"}";
+        JsonObject result = httpPost(url + HFCAAffiliation.HFCA_AFFILIATION+"?force=false",body,registrar);
+        return isSuccess(result);
+    }
+
+    public boolean removeAffiliation(String affiliationName,User registrar,boolean force) throws Exception {
+        String urlRemove = url + HFCAAffiliation.HFCA_AFFILIATION;
+        urlRemove = urlRemove + "/"+affiliationName+"?";
+        urlRemove = urlRemove + "force=" + force ;
+        JsonObject result = httpDelete(urlRemove,registrar);
+        return isSuccess(result);
+    }
+
+    public boolean updateAffiliation(String affiliationName,String affiliationNameOld,User registrar) throws Exception {
+        String urlRemove = url + HFCAAffiliation.HFCA_AFFILIATION;
+        urlRemove = urlRemove + "/"+affiliationNameOld+"?";
+        urlRemove = urlRemove + "force=false";
+        String body = "{\"name\":\""+affiliationName + "\"}";
+        JsonObject result = httpPut(urlRemove,body,registrar);
+        return isSuccess(result);
+    }
+
+    public boolean isSuccess(JsonObject result){
+        String statusCode = result.get("statusCode").toString();
+        if("200".equals(statusCode)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 

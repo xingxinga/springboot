@@ -46,12 +46,16 @@ public class CAClient {
         return buildAffiliations(hFCAAffiliation,list);
     }
 
-    public HFCAAffiliation createAffiliation(String affiliationName) throws Exception{
-        return client.newHFCAAffiliation(affiliationName);
+    public boolean createAffiliation(String affiliationName) throws Exception{
+        return client.createAffiliation(affiliationName,caUser);
     }
 
-    public HFCAAffiliation remvoeAffiliation(String affiliationName){
-        return null;
+    public boolean remvoeAffiliation(String affiliationName,boolean force)throws Exception{
+        return client.removeAffiliation(affiliationName,caUser,force);
+    }
+
+    public boolean updateAffiliation(String affiliationName,String affiliationNameOld)throws Exception{
+        return client.updateAffiliation(affiliationName,affiliationNameOld,caUser);
     }
 
     public void registerCommon(String userName,String password ){
@@ -75,7 +79,12 @@ public class CAClient {
     }
 
     private List<HFCAAffiliation> buildAffiliations(HFCAAffiliation hFCAAffiliation,List<HFCAAffiliation> list) throws Exception{
-        list.add(hFCAAffiliation);
+        if(hFCAAffiliation==null){
+            return null;
+        }
+        if(!hFCAAffiliation.getName().isEmpty()){
+            list.add(hFCAAffiliation);
+        }
         Collection<HFCAAffiliation> listChildren = hFCAAffiliation.getChildren();
         if(listChildren!=null&&listChildren.size()!=0){
             for(HFCAAffiliation hFCAAffiliation_:listChildren){

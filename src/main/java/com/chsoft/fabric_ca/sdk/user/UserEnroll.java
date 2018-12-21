@@ -23,7 +23,9 @@ public class UserEnroll {
     private static CryptoPrimitives crypto;
     
     private HFCAClient client;
-    
+
+	private CaUser serverUser;
+
     public UserEnroll() throws Exception{
 		super();
 		//通过CA服务器地址和端口、CA服务器名称，获得CA客户端实体类——client
@@ -31,10 +33,14 @@ public class UserEnroll {
         //调用client的登录方法，参数为登录用户的用户名和用户密码
 		CryptoSuite cryptoSuite = CryptoSuite.Factory.getCryptoSuite();
         client.setCryptoSuite(cryptoSuite);
+		Enrollment enrollment = client.enroll(TEST_ADMIN_NAME,TEST_ADMIN_PW);
+		serverUser = new CaUser();
+		serverUser.setEnrollment(enrollment);
 	}
 	public static void main(String[] args) throws Exception{
 		UserEnroll u = new UserEnroll();
-		u.getAllAffiliations();
+		HFCAClient client = u.getClient();
+		CaUser adminUser = u.getServerUser();
 /*		HFCAInfo HFCAInfo = u.client.info();
 		System.out.println(HFCAInfo.toString());*/
     	//初始化执行注册用户
@@ -52,14 +58,11 @@ public class UserEnroll {
 		u.generateUserMSP(registerUser);*/
 		//HFCAClient client = u.getClient();
 		//client.getHFCAAffiliations()
-		HFCAClient client = u.getClient();
-		client.newHFCAAffiliation("com.example.org3");
+		//client.info();
+		client.createAffiliation("com.example.org6",adminUser);
 	}
 
 	public void getAllAffiliations() throws Exception{
-		CaUser serverUser = new CaUser();
-		Enrollment enrollment = Enroll(TEST_ADMIN_NAME,TEST_ADMIN_PW);
-		serverUser.setEnrollment(enrollment);
 		HFCAAffiliation HFCAAffiliation = client.getHFCAAffiliations(serverUser);
 		System.out.print("aaaa");
 	}
@@ -119,6 +122,9 @@ public class UserEnroll {
 	public HFCAClient getClient() {
 		return client;
 	}
-	
+
+	public CaUser getServerUser(){
+		return serverUser;
+	}
 	
 }

@@ -44,9 +44,38 @@ public class AffiliationController {
     }
 
     @RequestMapping("/create")
-    public String create(String affiliationName) throws Exception{
-        caClient.createAffiliation(affiliationName);
+    public String create(String affiliationName,Model model) throws Exception{
+        if(caClient.createAffiliation(affiliationName)){
+            model.addAttribute("message","组织添加成功："+affiliationName);
+        }
+        List<HFCAAffiliation> list = caClient.getAllAffiliation();
+        model.addAttribute("affiliationList",list);
         return "redirect:/affiliation/list";
     }
 
+    @RequestMapping("/delete")
+    public String delete(String affiliationName,boolean force,Model model) throws Exception{
+        if(caClient.remvoeAffiliation(affiliationName,force)){
+            model.addAttribute("message","组织删除成功："+affiliationName);
+        }
+        List<HFCAAffiliation> list = caClient.getAllAffiliation();
+        model.addAttribute("affiliationList",list);
+        return "redirect:/affiliation/list";
+    }
+
+    @RequestMapping("/toUpdate")
+    public String toUpdate(String affiliationName,Model model) throws Exception{
+        model.addAttribute("affiliationName",affiliationName);
+        return "com/chsoft/fabric_ca/affiliation/update";
+    }
+
+    @RequestMapping("/update")
+    public String update(String affiliationName,String affiliationNameOld,Model model) throws Exception{
+        if(caClient.updateAffiliation(affiliationName,affiliationNameOld)){
+            model.addAttribute("message","组织修改成功："+affiliationName);
+        }
+        List<HFCAAffiliation> list = caClient.getAllAffiliation();
+        model.addAttribute("affiliationList",list);
+        return "redirect:/affiliation/list";
+    }
 }

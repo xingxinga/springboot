@@ -23,7 +23,7 @@
                 <section class="content">
                     <div class="update-tourist-div">
                         <!--添加内容-->
-                        <form class="form-horizontal" action="${contextPath}/affiliation/save" method="post">
+                        <form class="form-horizontal" action="${contextPath}/affiliation/update" method="post">
                             <div class="box-body">
                                 <!--标题-->
                                 <div class="form-group">
@@ -31,6 +31,9 @@
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control js-title" id="affiliationName" name="affiliationName"  value="${affiliationName}" >
                                     </div>
+                                </div>
+                                <div hidden>
+                                    <input type="text" id="affiliationNameOld" name="affiliationNameOld"  value="${affiliationName}" >
                                 </div>
                                 <a  class="btn btn-block btn-default update-mylife-return" href="javascript:history.back(-1)">返回</a>
                                 <button type="submit" class="btn btn-block btn-success update-tourist-but js-save">保存</button>
