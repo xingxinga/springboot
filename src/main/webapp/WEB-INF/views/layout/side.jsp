@@ -73,8 +73,8 @@
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="${pageContext.request.contextPath}/invoice/list">发票列表</a></li>
-                        <li><a href="${pageContext.request.contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
+                        <li><a href="${contextPath}/invoice/list">发票列表</a></li>
+                        <li><a href="${contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -83,8 +83,8 @@
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="${pageContext.request.contextPath}/invoice/list">发票列表</a></li>
-                        <li><a href="${pageContext.request.contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
+                        <li><a href="${contextPath}/invoice/list">发票列表</a></li>
+                        <li><a href="${contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
                     </ul>
                 </li>
         </ul>

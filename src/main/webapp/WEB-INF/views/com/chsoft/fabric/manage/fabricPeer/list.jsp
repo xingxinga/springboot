@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <!--添加-->
-                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="/fabricPeer/edit">添加节点</a>
+                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="${contextPath}/fabricPeer/edit">添加节点</a>
                                 </div>
                             </div>
                             <!-- /.box-header -->
@@ -47,7 +47,7 @@
                                             <td>${peer.peerName}</td>
                                             <td>${peer.peerLocation}</td>
                                             <td>${peer.orgId}</td>
-                                            <td><a href="/fabricPeer/edit?id=${peer.id}">编辑</a></td>
+                                            <td><a href="${contextPath}/fabricPeer/edit?id=${peer.id}">编辑</a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

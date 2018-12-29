@@ -28,7 +28,7 @@
                                         </div>
                                     </div>
                                     <!--添加-->
-                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="/fabricChannel/edit">添加通道</a>
+                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="${contextPath}/fabricChannel/edit">添加通道</a>
                                 </div>
                             </div>
                             <!-- /.box-header -->
@@ -45,9 +45,9 @@
                                             <td>${channel.channelName}</td>
                                             <td>${channel.channelFilePath}</td>
                                             <td>
-                                                <a href="/fabricChannel/edit?id=${channel.id}">查看</a>
-                                                <a href="/fabricChannel/fabricCreateChannel?id=${channel.id}">创建此通道</a>
-                                                <a href="/fabricChannel/fabricJoinPeer?id=${channel.id}">加入系统节点</a>
+                                                <a href="${contextPath}/fabricChannel/edit?id=${channel.id}">查看</a>
+                                                <a href="${contextPath}/fabricChannel/fabricCreateChannel?id=${channel.id}">创建此通道</a>
+                                                <a href="${contextPath}/fabricChannel/fabricJoinPeer?id=${channel.id}">加入系统节点</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

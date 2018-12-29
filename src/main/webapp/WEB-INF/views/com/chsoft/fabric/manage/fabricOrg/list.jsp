@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <!--添加-->
-                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="/fabricOrg/edit">添加节点</a>
+                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="${contextPath}/fabricOrg/edit">添加节点</a>
                                 </div>
                             </div>
                             <!-- /.box-header -->

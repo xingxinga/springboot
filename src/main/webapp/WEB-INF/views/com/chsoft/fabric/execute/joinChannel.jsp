@@ -21,7 +21,7 @@
                     <section class="content">
                         <div class="update-tourist-div">
                             <!--添加内容-->
-                            <form class="form-horizontal" action="/execute/joinChannel" method="post">
+                            <form class="form-horizontal" action="${contextPath}/execute/joinChannel" method="post">
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label for="" class="col-sm-2 control-label">选择通道</label>

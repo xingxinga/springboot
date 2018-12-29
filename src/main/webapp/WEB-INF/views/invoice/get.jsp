@@ -117,7 +117,7 @@
     function getInvoice() {
         $.ajax({
             type : "POST",//提交方式
-            url  : "/invoice/fabricGetInvoice",//提交地址 
+            url  : "${contextPath}/invoice/fabricGetInvoice",//提交地址 
             data : {
                 invoiceCode:$("#code").val(),
                 invoiceNo:$("#number").val()

@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <!--添加-->
-                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="/fabricChaincode/edit">添加链码</a>
+                                    <a  class="btn btn-block btn-info tech-box-add js_add_link" href="${contextPath}/fabricChaincode/edit">添加链码</a>
                                 </div>
                             </div>
                             <%--<div class="box-header" style="padding: 5px;">
@@ -57,8 +57,8 @@
                                             <td>${chaincode.invokeWatiTime}</td>
                                             <td>${chaincode.deployWatiTime}</td>
                                             <td>
-                                                <a href="/fabricChaincode/edit?id=${chaincode.id}">查看</a>
-                                                <a href="/fabricChaincode/fabricInstallChaincode?id=${chaincode.id}">安装链码</a>
+                                                <a href="${contextPath}/fabricChaincode/edit?id=${chaincode.id}">查看</a>
+                                                <a href="${contextPath}/fabricChaincode/fabricInstallChaincode?id=${chaincode.id}">安装链码</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

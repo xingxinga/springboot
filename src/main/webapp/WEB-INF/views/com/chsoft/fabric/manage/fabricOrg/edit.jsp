@@ -23,7 +23,7 @@
                 <section class="content">
                     <div class="update-tourist-div">
                         <!--添加内容-->
-                        <form class="form-horizontal" action="/fabricOrg/save" method="post">
+                        <form class="form-horizontal" action="${contextPath}/fabricOrg/save" method="post">
                             <div class="box-body">
                                 <!--标题-->
                                 <div class="form-group">

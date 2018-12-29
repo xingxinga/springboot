@@ -31,7 +31,7 @@
                                     <c:forEach items="${channelList}" var="channel">
                                         <tr>
                                             <td>${channel}</td>
-                                            <td><a href="/local/channelInstantiate?channelName=${channel}">查询</a></td>
+                                            <td><a href="${contextPath}/local/channelInstantiate?channelName=${channel}">查询</a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

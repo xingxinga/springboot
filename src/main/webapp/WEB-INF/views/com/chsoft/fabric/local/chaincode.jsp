@@ -50,7 +50,7 @@
                                                     <td>${chaincode.chaincodeName}</td>
                                                     <td>${chaincode.chaincodeVersion}</td>
                                                     <td>${chaincode.chaincodePath}</td>
-                                                    <td><a href="/local/toInstantiateChaincode?chaincodeName=${chaincode.chaincodeName}&chaincodeVersion=${chaincode.chaincodeVersion}&chaincodePath=${chaincode.chaincodePath}">实例化链码</a></td>
+                                                    <td><a href="${contextPath}/local/toInstantiateChaincode?chaincodeName=${chaincode.chaincodeName}&chaincodeVersion=${chaincode.chaincodeVersion}&chaincodePath=${chaincode.chaincodePath}">实例化链码</a></td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
