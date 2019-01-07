@@ -1,6 +1,4 @@
 package com.chsoft.sys.user.entity;
-
-import com.chsoft.sys.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,34 +6,21 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class User extends BaseEntity {
+public class User {
     private String id;
 
     private String username;
 
     private String password;
 
-    /*public String getId() {
-        return id;
-    }
+    private String privatekeyfilepath;
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
+    private String certificatefile;
 
-    public String getUsername() {
-        return username;
-    }
+    private String fabricusername;
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
+    private String fabricaffiliation;
 
-    public String getPassword() {
-        return password;
-    }
+    private String fabricmspid;
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }*/
 }

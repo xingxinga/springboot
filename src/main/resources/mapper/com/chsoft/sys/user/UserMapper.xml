@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chsoft.sys.user.dao.UserDao">
+<mapper namespace="com.chsoft.sys.user.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.chsoft.sys.user.entity.User">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="userName" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="privateKeyFilePath" jdbcType="VARCHAR" property="privatekeyfilepath" />
+    <result column="certificateFile" jdbcType="VARCHAR" property="certificatefile" />
+    <result column="fabricUserName" jdbcType="VARCHAR" property="fabricusername" />
+    <result column="fabricAffiliation" jdbcType="VARCHAR" property="fabricaffiliation" />
+    <result column="fabricMspId" jdbcType="VARCHAR" property="fabricmspid" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, userName, password
+    id, userName, password, privateKeyFilePath, certificateFile, fabricUserName, fabricAffiliation, 
+    fabricMspId
   </sql>
+  <select id="getUserByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where userName = #{userName}
+  </select>
+
   <select id="getPassword" parameterType="java.lang.String" resultType="java.lang.String">
-      select password
-        from user
-        where userName = #{username}
+    select password
+      from user
+    where userName = #{username}
   </select>
 
   <select id="getRole" parameterType="java.lang.String" resultType="java.lang.String">
@@ -31,22 +44,22 @@
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from user
     where id = #{id,jdbcType=VARCHAR}
   </select>
-
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.chsoft.sys.user.entity.User">
-    insert into user (id, userName, password
-      )
-    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
+    insert into user (id, userName, password, 
+      privateKeyFilePath, certificateFile, fabricUserName, 
+      fabricAffiliation, fabricMspId)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{privatekeyfilepath,jdbcType=VARCHAR}, #{certificatefile,jdbcType=VARCHAR}, #{fabricusername,jdbcType=VARCHAR}, 
+      #{fabricaffiliation,jdbcType=VARCHAR}, #{fabricmspid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.chsoft.sys.user.entity.User">
     insert into user
@@ -60,6 +73,21 @@
       <if test="password != null">
         password,
       </if>
+      <if test="privatekeyfilepath != null">
+        privateKeyFilePath,
+      </if>
+      <if test="certificatefile != null">
+        certificateFile,
+      </if>
+      <if test="fabricusername != null">
+        fabricUserName,
+      </if>
+      <if test="fabricaffiliation != null">
+        fabricAffiliation,
+      </if>
+      <if test="fabricmspid != null">
+        fabricMspId,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -70,6 +98,21 @@
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="privatekeyfilepath != null">
+        #{privatekeyfilepath,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatefile != null">
+        #{certificatefile,jdbcType=VARCHAR},
+      </if>
+      <if test="fabricusername != null">
+        #{fabricusername,jdbcType=VARCHAR},
+      </if>
+      <if test="fabricaffiliation != null">
+        #{fabricaffiliation,jdbcType=VARCHAR},
+      </if>
+      <if test="fabricmspid != null">
+        #{fabricmspid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -82,13 +125,33 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
+      <if test="privatekeyfilepath != null">
+        privateKeyFilePath = #{privatekeyfilepath,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatefile != null">
+        certificateFile = #{certificatefile,jdbcType=VARCHAR},
+      </if>
+      <if test="fabricusername != null">
+        fabricUserName = #{fabricusername,jdbcType=VARCHAR},
+      </if>
+      <if test="fabricaffiliation != null">
+        fabricAffiliation = #{fabricaffiliation,jdbcType=VARCHAR},
+      </if>
+      <if test="fabricmspid != null">
+        fabricMspId = #{fabricmspid,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.chsoft.sys.user.entity.User">
     update user
     set userName = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR}
+      password = #{password,jdbcType=VARCHAR},
+      privateKeyFilePath = #{privatekeyfilepath,jdbcType=VARCHAR},
+      certificateFile = #{certificatefile,jdbcType=VARCHAR},
+      fabricUserName = #{fabricusername,jdbcType=VARCHAR},
+      fabricAffiliation = #{fabricaffiliation,jdbcType=VARCHAR},
+      fabricMspId = #{fabricmspid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

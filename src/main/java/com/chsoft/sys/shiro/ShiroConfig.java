@@ -32,7 +32,7 @@ public class ShiroConfig {
         /*filterChainDefinitionMap.put("/views*//**", "anon");*/
         filterChainDefinitionMap.put("/static/**", "anon");
         //用户，需要角色权限 “user”
-        filterChainDefinitionMap.put("/user/**", "roles[user]");
+        //filterChainDefinitionMap.put("/user/**", "roles[user]");
         filterChainDefinitionMap.put("/views/**", "anon");
         //管理员，需要角色权限 “admin”
         filterChainDefinitionMap.put("/admin/**", "roles[admin]");

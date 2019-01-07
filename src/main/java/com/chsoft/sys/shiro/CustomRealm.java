@@ -1,6 +1,7 @@
 package com.chsoft.sys.shiro;
 
-import com.chsoft.sys.user.dao.UserDao;
+import com.chsoft.sys.user.dao.UserMapper;
+import com.chsoft.sys.user.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -15,7 +16,7 @@ import java.util.Set;
 public class CustomRealm extends AuthorizingRealm {
 
     @Resource
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     /**
      * 获取身份验证信息
@@ -29,13 +30,14 @@ public class CustomRealm extends AuthorizingRealm {
         System.out.println("————身份认证方法————");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         // 从数据库获取对应用户名密码的用户
-        String password = userDao.getPassword(token.getUsername());
+        String password = userMapper.getPassword(token.getUsername());
         if (null == password) {
             throw new AccountException("用户名不正确");
         } else if (!password.equals(new String((char[]) token.getCredentials()))) {
             throw new AccountException("密码不正确");
         }
-        return new SimpleAuthenticationInfo(token.getPrincipal(), password, getName());
+        User user = userMapper.getUserByName(token.getUsername());
+        return new SimpleAuthenticationInfo(user, password, getName());
     }
 
     /**
@@ -47,10 +49,10 @@ public class CustomRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("————权限认证————");
-        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //获得该用户角色
-        String role = userDao.getRole(username);
+        String role = userMapper.getRole(user.getUsername());
         Set<String> set = new HashSet<>();
         //需要将 role 封装到 Set 作为 info.setRoles() 的参数
         set.add(role);

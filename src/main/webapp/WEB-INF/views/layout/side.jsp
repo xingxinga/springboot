@@ -13,7 +13,7 @@
         <div class="user-panel">
             <div class="pull-left image" onclick="ToPersonSetting()"><img src="${contextStatic}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"></div>
             <div class="pull-left info">
-                [<shiro:principal/>] <a href="${pageContext.request.contextPath}/logout"> 注销</a></div>
+                [<shiro:principal  property='username'/>] <a href="${pageContext.request.contextPath}/logout"> 注销</a></div>
         </div>
         <ul class="sidebar-menu" data-widget="tree">
             <shiro:hasRole name="admin">
@@ -85,6 +85,15 @@
                     <ul class="treeview-menu">
                         <li><a href="${contextPath}/invoice/list">发票列表</a></li>
                         <li><a href="${contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-paw"></i> <span>用户管理</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="${contextPath}/user/edit">用户详情</a></li>
                     </ul>
                 </li>
         </ul>

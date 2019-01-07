@@ -1,6 +1,6 @@
 package com.chsoft.sys.user.server;
 
-import com.chsoft.sys.user.dao.UserDao;
+import com.chsoft.sys.user.dao.UserMapper;
 import com.chsoft.sys.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 public class UserServer {
 
     @Autowired
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     public User getUser(String id){
-        return userDao.selectByPrimaryKey(id);
+        return userMapper.selectByPrimaryKey(id);
     }
 
 }

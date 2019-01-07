@@ -34,10 +34,10 @@ public class CAClient {
 
     @PostConstruct
     public void init() throws Exception{
-        initHFCAClient(config.getCaName(), config.getServerIp());
+        /*initHFCAClient(config.getCaName(), config.getServerIp());
         caUser.setName(config.getAdminUserName());
         caUser.setPassword(config.getAdminUserPassword());
-        caUser.setEnrollment(getEnrollment(caUser.getName(),caUser.getPassword()));
+        caUser.setEnrollment(getEnrollment(caUser.getName(),caUser.getPassword()));*/
     }
 
     public List<HFCAAffiliation> getAllAffiliation() throws Exception{

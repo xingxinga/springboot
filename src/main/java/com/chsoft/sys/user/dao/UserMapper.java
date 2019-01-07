@@ -1,9 +1,8 @@
 package com.chsoft.sys.user.dao;
 
-
 import com.chsoft.sys.user.entity.User;
 
-public interface UserDao {
+public interface UserMapper {
     int deleteByPrimaryKey(String id);
 
     int insert(User record);
@@ -19,4 +18,7 @@ public interface UserDao {
     String getPassword(String userName);
 
     String getRole(String userName);
+
+    User getUserByName(String userName);
+
 }
