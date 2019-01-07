@@ -48,10 +48,18 @@ public class AopFabricClient extends SampleFabricCreateClient{
 		super(fabricUser);
 	}
 
-	@PostConstruct
+	/*@PostConstruct
 	public void init(){
 		try {
 			client = FabricClientFactory.getPeerUserClient(fabricLocal.getLocalFabricUserAdmin());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
+	public void init(FabricUser fabricUser){
+		try {
+			client = FabricClientFactory.getPeerUserClient(fabricUser);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
