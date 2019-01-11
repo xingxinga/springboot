@@ -21,6 +21,8 @@ public class Invoice {
 
     private String invoiceSeller;
 
+    private String invoiceFinancingBank;
+
     public String getId() {
         return id;
     }
@@ -99,5 +101,13 @@ public class Invoice {
 
     public void setInvoiceSeller(String invoiceSeller) {
         this.invoiceSeller = invoiceSeller == null ? null : invoiceSeller.trim();
+    }
+
+    public String getInvoiceFinancingBank() {
+        return invoiceFinancingBank;
+    }
+
+    public void setInvoiceFinancingBank(String invoiceFinancingBank) {
+        this.invoiceFinancingBank = invoiceFinancingBank;
     }
 }

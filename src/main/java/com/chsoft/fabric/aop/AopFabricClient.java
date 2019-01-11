@@ -19,6 +19,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -60,6 +61,12 @@ public class AopFabricClient extends SampleFabricCreateClient{
 	public void init(FabricUser fabricUser){
 		try {
 			client = FabricClientFactory.getPeerUserClient(fabricUser);
+			channel = null;
+			orderer = null;
+			orderers = null;
+			peer = null;
+			peers = null;
+			fabricChaincode = null;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -342,7 +349,8 @@ public class AopFabricClient extends SampleFabricCreateClient{
 		transactionProposalRequest.setTransientMap(tm2);
 		Collection<ProposalResponse> transactionPropResp = channel.sendTransactionProposal(transactionProposalRequest);
 		Util.getResult(transactionPropResp);
-		channel.sendTransaction(transactionPropResp);
+		CompletableFuture<BlockEvent.TransactionEvent> aa =  channel.sendTransaction(transactionPropResp);
+		fcn = null;
 	}
 	/**
 	 * Sets the value of a field on an object

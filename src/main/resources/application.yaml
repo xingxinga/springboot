@@ -36,7 +36,7 @@ system:
     local:
       peer:
         peerName: "peer0.org1.example.com"
-        peerLocation: "grpc://192.168.15.129:7051"
+        peerLocation: "grpc://192.168.1.152:7051"
       org:
         orgName: ""
         orgmspid:
@@ -50,7 +50,7 @@ system:
       ordererList:
         orderer1:
           domainName: "example.com"
-          location: "grpc://192.168.15.129:7050"
+          location: "grpc://192.168.1.152:7050"
           ordererName: "orderer.example.com"
         orderer2:
           domainName: ""
@@ -66,7 +66,7 @@ system:
         name: "admin"
         password: "adminpw"
       serverInfo:
-        ip: "http://192.168.15.129:7054"
+        ip: "http://192.168.1.152:7054"
         caName: "client"
 
 

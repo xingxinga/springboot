@@ -2,7 +2,6 @@ package com.chsoft.webapp.invoice.controller;
 
 import com.chsoft.fabric.aop.AopFabricClient;
 import com.chsoft.fabric.local.entity.FabricLocal;
-import com.chsoft.sys.user.server.UserServer;
 import com.chsoft.webapp.chaincode.InvoicChaincode;
 import com.chsoft.webapp.invoice.entity.Invoice;
 import com.chsoft.webapp.invoice.server.InvoicServer;
@@ -62,7 +61,7 @@ public class InvoiceController {
     }
 
     @RequestMapping("/fabricUploadInvoice")
-    public String uploadInvoice(String id,Model model) throws Exception{
+    public String uploadInvoice(String id) throws Exception{
         Invoice invoice = invoicServer.findInvoiceById(id);
         invoicChaincode.uploadInvoice(invoice);
         return "redirect:/invoice/list";
@@ -75,8 +74,38 @@ public class InvoiceController {
 
     @RequestMapping("/fabricGetInvoice")
     @ResponseBody
-    public Invoice getInvoice(String invoiceCode,String invoiceNo,Model model) throws Exception{
+    public Invoice getInvoice(String invoiceCode,String invoiceNo) throws Exception{
         Invoice invoice = invoicChaincode.getInvoice(invoiceCode,invoiceNo);
         return invoice;
     }
+
+    @RequestMapping("/fabricGetUserInvoiceList")
+    public String fabricGetUserInvoiceList(Model model) throws Exception{
+        List<Invoice> list = invoicChaincode.getUserInvoiceList();
+        model.addAttribute("invoiceList",list);
+        return "/invoice/fabricUserInvoiceList";
+    }
+
+    @RequestMapping("/fabricGetBankInvoiceList")
+    public String fabricGetBankInvoiceList(Model model) throws Exception{
+        List<Invoice> list = invoicChaincode.getBankInvoiceList();
+        model.addAttribute("invoiceList",list);
+        return "/invoice/fabricBankInvoiceList";
+    }
+
+    @RequestMapping("/fabricUpdateInvoiceFinancingBank")
+    @ResponseBody
+    public String fabricUpdateInvoiceFinancingBank(String invoiceCode,String invoiceNo,String invoiceFinancingBank) throws Exception{
+        invoicChaincode.updateInvoiceFinancingBank(invoiceCode,invoiceNo,invoiceFinancingBank);
+        return "success";
+    }
+
+    @RequestMapping("/fabricUpdateInvoiceAttribution")
+    @ResponseBody
+    public String fabricUpdateInvoiceAttribution(String invoiceCode,String invoiceNo) throws Exception{
+        invoicChaincode.updateInvoiceAttribution(invoiceCode,invoiceNo);
+        return "success";
+    }
+
+
 }

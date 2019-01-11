@@ -16,7 +16,7 @@
                 [<shiro:principal  property='username'/>] <a href="${pageContext.request.contextPath}/logout"> 注销</a></div>
         </div>
         <ul class="sidebar-menu" data-widget="tree">
-            <shiro:hasRole name="admin">
+            <%--<shiro:hasRole name="admin">--%>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-paw"></i> <span>系统节点信息</span>
@@ -66,27 +66,33 @@
                         <li><a href="${contextPath}/affiliation/list">组织管理</a></li>
                     </ul>
                 </li>
-            </shiro:hasRole>
+            <%--</shiro:hasRole>--%>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-paw"></i> <span>发票管理</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="${contextPath}/invoice/list">发票列表</a></li>
+                        <li><a href="${contextPath}/invoice/list">本地发票列表</a></li>
+                        <li><a href="${contextPath}/invoice/fabricGetUserInvoiceList">链上发票列表</a></li>
                         <li><a href="${contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
+
+
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-paw"></i> <span>证书管理</span>
-                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="${contextPath}/invoice/list">发票列表</a></li>
-                        <li><a href="${contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
-                    </ul>
-                </li>
+
+                <shiro:hasRole name="bank">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-paw"></i> <span>融资申请管理</span>
+                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="${contextPath}/invoice/fabricGetBankInvoiceList">查询融资申请</a></li>
+                        </ul>
+                    </li>
+                </shiro:hasRole>
+
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-paw"></i> <span>用户管理</span>

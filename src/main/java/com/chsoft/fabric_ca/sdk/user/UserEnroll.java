@@ -17,7 +17,7 @@ public class UserEnroll {
 	
     private static final String TEST_ADMIN_NAME = "admin";
     private static final String TEST_ADMIN_PW = "adminpw";
-    private static final String ip = "192.168.15.129:7054"; 
+    private static final String ip = "192.168.1.152:7054";
     private static final String CA_NAME = "client"; 
     private static final String MSP_PATH = "D:\\produceTest\\msp\\";
     private static CryptoPrimitives crypto;
