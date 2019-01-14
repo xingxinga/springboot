@@ -55,7 +55,7 @@
                         <li><a href="${contextPath}/fabricChaincode/list">链码管理</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
+                <%--<li class="treeview">
                     <a href="#">
                         <i class="fa fa-paw"></i> <span>证书平台</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
@@ -65,7 +65,7 @@
                         <li><a href="${contextPath}/affiliation/list">证书列表</a></li>
                         <li><a href="${contextPath}/affiliation/list">组织管理</a></li>
                     </ul>
-                </li>
+                </li>--%>
             <%--</shiro:hasRole>--%>
                 <li class="treeview">
                     <a href="#">
@@ -75,6 +75,7 @@
                     <ul class="treeview-menu">
                         <li><a href="${contextPath}/invoice/list">本地发票列表</a></li>
                         <li><a href="${contextPath}/invoice/fabricGetUserInvoiceList">链上发票列表</a></li>
+                        <li><a href="${contextPath}/invoice/fabricGetRelationInvoiceList">链上相关发票列表</a></li>
                         <li><a href="${contextPath}/invoice/tofabricGetInvoice">发票验证</a></li>
 
 

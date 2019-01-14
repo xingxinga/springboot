@@ -56,12 +56,12 @@
                                         <input type="text" class="form-control js-title" id="invoiceTotal" name="invoiceTotal"  value="${invoice.invoiceTotal}" >
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <%--<div class="form-group">
                                     <label for="" class="col-sm-2 control-label"><span>*</span>发票归属方</label>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control js-title" id="invoiceAttribution" name="invoiceAttribution"  value="${invoice.invoiceAttribution}" >
                                     </div>
-                                </div>
+                                </div>--%>
                                 <div class="form-group">
                                     <label for="" class="col-sm-2 control-label"><span>*</span>发票买方</label>
                                     <div class="col-sm-4">

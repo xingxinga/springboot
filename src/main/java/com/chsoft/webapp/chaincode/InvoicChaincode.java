@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class InvoicChaincode implements ChaincodeCreate {
 
-    private final String chaincodeName = "mycc3";
+    private final String chaincodeName = "invoic";
 
     private final String chaincodePath = "github.com/chaincode/first/";
 
@@ -70,6 +70,13 @@ public class InvoicChaincode implements ChaincodeCreate {
 
     public List<Invoice> getBankInvoiceList() throws Exception{
         String fcn = "getBankInvoiceList";
+        String[] args = new String[0];
+        String result = aopFabricClient.queryChaincode(channelName,fabricLocal.getLocalFabricPeer(),fabricChaincode,fcn,args);
+        return JSON.parseArray(result, Invoice.class);
+    }
+
+    public List<Invoice> getRelationInvoiceList() throws Exception{
+        String fcn = "getRelationInvoiceList";
         String[] args = new String[0];
         String result = aopFabricClient.queryChaincode(channelName,fabricLocal.getLocalFabricPeer(),fabricChaincode,fcn,args);
         return JSON.parseArray(result, Invoice.class);

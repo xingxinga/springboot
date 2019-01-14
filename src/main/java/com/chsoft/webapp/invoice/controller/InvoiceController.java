@@ -93,6 +93,14 @@ public class InvoiceController {
         return "/invoice/fabricBankInvoiceList";
     }
 
+    @RequestMapping("/fabricGetRelationInvoiceList")
+    public String fabricGetRelationInvoiceList(Model model) throws Exception{
+        List<Invoice> list = invoicChaincode.getRelationInvoiceList();
+        model.addAttribute("invoiceList",list);
+        return "/invoice/fabricRelationInvoiceList";
+    }
+
+
     @RequestMapping("/fabricUpdateInvoiceFinancingBank")
     @ResponseBody
     public String fabricUpdateInvoiceFinancingBank(String invoiceCode,String invoiceNo,String invoiceFinancingBank) throws Exception{
