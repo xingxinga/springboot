@@ -19,7 +19,7 @@ import java.io.File;
 @Component  
 @Aspect
 /**
- * 组装具体实现类
+ * 组装具体实现类，根据登录用户初始化aopFabric客户端
  */
 public class FabricUserCreateAction {
 
@@ -40,7 +40,9 @@ public class FabricUserCreateAction {
 		}else{
 			return;
 		}
+		//获取登录用户信息
 		User user = (User) SecurityUtils.getSubject().getPrincipal();
+		//获取登录用户在fabric中的用户证书密钥信息
 		File privatePath = new File(user.getPrivatekeyfilepath());
 		File privateKeyFile =  UtilCer.findFileSk(privatePath);
 		File certificateFile = new File(user.getCertificatefile());

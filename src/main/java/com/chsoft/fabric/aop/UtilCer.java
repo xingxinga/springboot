@@ -25,25 +25,15 @@ import java.security.spec.InvalidKeySpecException;
  */
 @Component
 public class UtilCer {
-	
+
 	/**
-	 * 
-	* @Title: getMember 
-	* @Description: TODO(这里用一句话描述这个方法的作用) 
-	* @param @param org
-	* @param @param mspId
-	* @param @param privateKeyFile
-	* @param @param certificateFile
-	* @param @return
-	* @param @throws IOException
-	* @param @throws NoSuchAlgorithmException
-	* @param @throws NoSuchProviderException
-	* @param @throws InvalidKeySpecException    入参
-	* @return FabricUser    返回类型
-	* @author lixing 
-	* @throws
-	* @date 2018年9月13日 下午2:36:58 
-	* @version V1.0
+	 * 生成fabric的用户信息
+	 * @param name fabric用户名
+	 * @param org 所属组织名称
+	 * @param mspId 所属组织的mspID
+	 * @param privateKeyFile 用户私钥地址
+	 * @param certificateFile 用户证书地址
+	 * @return
 	 */
 	public static FabricUser getMember(String name, String org, String mspId, File privateKeyFile, File certificateFile){
 			

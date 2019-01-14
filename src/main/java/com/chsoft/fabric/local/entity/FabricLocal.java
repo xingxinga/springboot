@@ -65,12 +65,20 @@ public class FabricLocal {
     @Resource
     private FabricOrderer fabricOrderer;
 
+    /**
+     * 获取系统peer节点信息
+     * @return
+     */
     public FabricPeer getLocalFabricPeer(){
         fabricPeer.setPeerName(peerName);
         fabricPeer.setPeerLocation(peerLocation);
         return fabricPeer;
     }
 
+    /**
+     * 获取fabric系统节点管理员用户
+     * @return
+     */
     public FabricUser getLocalFabricUserAdmin(){
         File privatePath = new File(adminUserPrivateKeyFilePath);
         File privateKeyFile =  UtilCer.findFileSk(privatePath);
@@ -81,12 +89,20 @@ public class FabricLocal {
         return fabricUser;
     }
 
+    /**
+     * 获取系统orderer节点信息
+     * @return
+     */
     public FabricOrderer getLocalFabricOrderer(){
         List<FabricOrderer> list = getLocalFabricOrdererList();
         int index = (int)(Math.random()*list.size());
         return list.get(index);
     }
 
+    /**
+     * 获取系统orderer节点集合
+     * @return
+     */
     public List<FabricOrderer> getLocalFabricOrdererList(){
         List<FabricOrderer> list = new ArrayList<FabricOrderer>();
         FabricOrderer fabricOrderer1 = new FabricOrderer();

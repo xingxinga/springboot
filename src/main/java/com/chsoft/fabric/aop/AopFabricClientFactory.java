@@ -14,6 +14,10 @@ public class AopFabricClientFactory {
     @Resource
     private FabricLocal fabricLocal;
 
+    /**
+     * g根据系统默认用户信息生成AopFabric客户端
+     * @return
+     */
     public AopFabricClient createAopFabricClient(){
         AopFabricClient aopFabricClient = new AopFabricClient();
         aopFabricClient.init(fabricLocal.getLocalFabricUserAdmin());

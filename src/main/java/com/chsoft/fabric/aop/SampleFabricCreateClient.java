@@ -10,22 +10,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lixing on 2018/12/7.
+ * Created by lixing on 2018/12/7
+ * fabric客户端创建器的简单实现类
  */
 public class SampleFabricCreateClient implements FabricCreateClient{
 
+    //fabric客户端
     public HFClient client;
 
+    //组装的通道
     public Channel channel;
 
+    //组装的ordere节点
     public Orderer orderer;
 
+    //组装的ordere集合
     public List<Orderer> orderers;
 
+    //组装的peer节点
     public Peer peer;
 
+    //组装的peer集合
     public List<Peer> peers;
 
+    //组装的chaincode
     public FabricChaincode fabricChaincode;
 
     public SampleFabricCreateClient(){
@@ -55,11 +63,22 @@ public class SampleFabricCreateClient implements FabricCreateClient{
         }
     }
 
+    /**
+     * 根据传入的ordere节点信息，使用当前的fabric客户端组装orderer节点
+     * @param fabricOrderer orderer节点信息
+     * @throws Exception
+     */
     @Override
     public void createOrderer(FabricOrderer fabricOrderer) throws Exception{
+        //创建orderer节点对象
         this.orderer = client.newOrderer(fabricOrderer.getOrdererName(), fabricOrderer.getOrdererLocation());
     }
 
+    /**
+     * 组装orderer集合
+     * @param fabricOrderers orderer集合信息
+     * @throws Exception
+     */
     @Override
     public void createOrdererList(List<FabricOrderer> fabricOrderers) throws Exception {
         List<Orderer> ordererList = new ArrayList<>();
@@ -70,11 +89,21 @@ public class SampleFabricCreateClient implements FabricCreateClient{
         this.orderers = ordererList;
     }
 
+    /**
+     * 根据传入的peer节点信息，使用当前的fabric客户端组装peer节点
+     * @param fabricPeer peer节点信息
+     * @throws Exception
+     */
     @Override
     public void createPeer(FabricPeer fabricPeer) throws Exception {
         this.peer = client.newPeer(fabricPeer.getPeerName(), fabricPeer.getPeerLocation());
     }
 
+    /**
+     * 组装peer节点集合
+     * @param fabricPeers peer集合
+     * @throws Exception
+     */
     @Override
     public void createPeerList(List<FabricPeer> fabricPeers) throws Exception{
         List<Peer> peersList = new ArrayList<>();
@@ -85,6 +114,11 @@ public class SampleFabricCreateClient implements FabricCreateClient{
         this.peers = peersList;
     }
 
+    /**
+     * 根据通道名组装通道
+     * @param channelName 通道名称
+     * @throws Exception
+     */
     @Override
     public void createChannel(String channelName) throws Exception{
         if(client.getChannel(channelName)!=null){

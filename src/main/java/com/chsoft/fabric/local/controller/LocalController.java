@@ -15,12 +15,6 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Set;
 
-/**
- * 测试控制器
- *
- * @author: @我没有三颗心脏
- * @create: 2018-05-08-下午 16:46
- */
 @Controller
 @RequestMapping("/local")
 public class LocalController {
@@ -34,6 +28,11 @@ public class LocalController {
     @Resource
     private FabricLocal fabricLocal;
 
+    /**
+     * 查询系统节点信息
+     * @param model
+     * @return
+     */
     @RequestMapping("/peer")
     public String peer(Model model) {
         FabricPeer fabricPeer = fabricLocal.getLocalFabricPeer();
@@ -43,6 +42,11 @@ public class LocalController {
         return "com/chsoft/fabric/local/peer";
     }
 
+    /**
+     * 查询系统orderer节点信息
+     * @param model
+     * @return
+     */
     @RequestMapping("/orderer")
     public String orderer(Model model) {
         List<FabricOrderer> list = fabricLocal.getLocalFabricOrdererList();
@@ -50,6 +54,12 @@ public class LocalController {
         return "com/chsoft/fabric/local/orderer";
     }
 
+    /**
+     * 查询系统节点上加入的通道
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/channel")
     public String channel(Model model) throws Exception{
         Set<String> list =  aopFabricClient.queryChannels(fabricLocal.getLocalFabricPeer());
@@ -57,6 +67,12 @@ public class LocalController {
         return "com/chsoft/fabric/local/channel";
     }
 
+    /**
+     * 查询系统节点上已安装的链码
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/chaincodeInstalled")
     public String installedChaincodes(Model model) throws Exception{
         List<ChaincodeInfo> list = aopFabricClient.queryInstalledChaincodes(fabricLocal.getLocalFabricPeer());
@@ -65,6 +81,13 @@ public class LocalController {
         return "com/chsoft/fabric/local/chaincode";
     }
 
+    /**
+     * 查询通道上已实例化的链码
+     * @param channelName
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/channelInstantiate")
     public String channelInstantiate(String channelName,Model model) throws Exception{
         List<ChaincodeInfo>  list = aopFabricClient.queryInstantiateChaincodes(channelName,fabricLocal.getLocalFabricPeer());
@@ -74,6 +97,15 @@ public class LocalController {
         return "com/chsoft/fabric/local/chaincode";
     }
 
+    /**
+     * 实例化链码跳转页面
+     * @param chaincodeName
+     * @param chaincodeVersion
+     * @param chaincodePath
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/toInstantiateChaincode")
     public String toInstantiateChaincode(String chaincodeName,String chaincodeVersion,String chaincodePath,Model model) throws Exception{
         Set<String> list =  aopFabricClient.queryChannels(fabricLocal.getLocalFabricPeer());

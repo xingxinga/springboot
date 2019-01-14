@@ -19,10 +19,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 测试控制器
- *
- * @author: @我没有三颗心脏
- * @create: 2018-05-08-下午 16:46
+ * 证书管理平台，组织管理Controller
  */
 @Controller
 @RequestMapping("/affiliation")
@@ -31,6 +28,12 @@ public class AffiliationController {
     @Resource
     private CAClient caClient;
 
+    /**
+     * 获取CA服务器组织列表
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/list")
     public String list(Model model) throws Exception{
         List<HFCAAffiliation> list = caClient.getAllAffiliation();

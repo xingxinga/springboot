@@ -58,6 +58,11 @@ public class AopFabricClient extends SampleFabricCreateClient{
 			e.printStackTrace();
 		}
 	}*/
+
+	/**
+	 * fabric客户端初始化操作，将对象中的属性清空
+	 * @param fabricUser 根据传入的用户对象生成fabric客户端
+	 */
 	public void init(FabricUser fabricUser){
 		try {
 			client = FabricClientFactory.getPeerUserClient(fabricUser);
@@ -118,8 +123,9 @@ public class AopFabricClient extends SampleFabricCreateClient{
 	/**
 	 * @Title: channelJoinPeer
 	 * @Description: TODO(peer加入一个指定的channel)
-	 * @param @param channel
-	 * @param @param fabricPeer
+	 * @param @param channelName //加入的通道名称
+	 * @param @param fabricOrderer //ordere对象
+	 * @param @param fabricPeer //加入的通道的peer对象
 	 * @param @return
 	 * @param @throws Exception    入参
 	 * @return Channel    返回类型
@@ -135,6 +141,13 @@ public class AopFabricClient extends SampleFabricCreateClient{
 		return channel;
 	}
 
+	/**
+	 *
+	 * @param fabricChaincode
+	 * @param fabricPeerList
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean peerListInstallChaincode(FabricChaincode fabricChaincode, List<FabricPeer> fabricPeerList) throws Exception {
 		ChaincodeID.Builder chaincodeIDBuilder = ChaincodeID.newBuilder().setName(fabricChaincode.getChaincodeName())
 				.setVersion(fabricChaincode.getChaincodeVersion());

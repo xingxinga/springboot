@@ -13,7 +13,12 @@ import org.hyperledger.fabric.sdk.security.CryptoSuite;
 * @version V1.0
  */
 public class FabricClientFactory {
-	
+	/**
+	 * 根据用户信息生成fabric客户端
+	 * @param fabricUser
+	 * @return
+	 * @throws Exception
+	 */
 	public static HFClient getPeerUserClient(FabricUser fabricUser) throws Exception{
 		HFClient client = HFClient.createNewInstance();
 		
