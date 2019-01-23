@@ -4,18 +4,17 @@ import com.chsoft.fabric.aop.AopFabricClient;
 import com.chsoft.fabric.local.entity.FabricLocal;
 import com.chsoft.fabric.manage.fabricChaincode.dao.FabricChaincodeMapper;
 import com.chsoft.fabric.manage.fabricChaincode.entity.FabricChaincode;
+import com.chsoft.fabric.manage.fabricPeer.entity.FabricPeer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 测试控制器
- *
- * @author: @我没有三颗心脏
- * @create: 2018-05-08-下午 16:46
+ * fabric系统链码模块Controller
  */
 @Controller
 @RequestMapping("/fabricChaincode")
@@ -30,6 +29,11 @@ public class FabricChaincodeController {
     @Resource
     private FabricLocal fabricLocal;
 
+    /**
+     * 查询本地链码列表
+     * @param model
+     * @return
+     */
     @RequestMapping("/list")
     public String list(Model model) {
         List<FabricChaincode> list = fabricChaincodeMapper.findAll();
@@ -37,6 +41,12 @@ public class FabricChaincodeController {
         return "com/chsoft/fabric/manage/fabricChaincode/list";
     }
 
+    /**
+     * 编辑链码信息
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/edit")
     public String edit(String id,Model model) {
         FabricChaincode fabricChaincode = fabricChaincodeMapper.selectByPrimaryKey(id);
@@ -44,6 +54,11 @@ public class FabricChaincodeController {
         return "com/chsoft/fabric/manage/fabricChaincode/edit";
     }
 
+    /**
+     * 保存链码
+     * @param fabricChaincode
+     * @return
+     */
     @RequestMapping("/save")
     public String save(FabricChaincode fabricChaincode) {
         if(fabricChaincode.getId().isEmpty()){
@@ -54,6 +69,12 @@ public class FabricChaincodeController {
         return "redirect:/fabricChaincode/list";
     }
 
+    /**
+     * 系统节点安装链码操作
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/fabricInstallChaincode")
     public String installChaincode(String id,Model model) {
         FabricChaincode fabricChaincode = fabricChaincodeMapper.selectByPrimaryKey(id);
@@ -70,6 +91,15 @@ public class FabricChaincodeController {
         }
     }
 
+    /**
+     * 系统节点实例化链码操作
+     * @param channelName
+     * @param arg
+     * @param xmlPath
+     * @param fabricChaincode
+     * @param model
+     * @return
+     */
     @RequestMapping("/fabricInstantiateChaincode")
     public String instantiateChaincode(String channelName,String arg,String xmlPath,FabricChaincode fabricChaincode,Model model) {
         try{
@@ -87,5 +117,15 @@ public class FabricChaincodeController {
             model.addAttribute("chaincodeList",list);
             return "redirect:/local/channelInstantiate?channelName="+channelName;
         }
+    }
+
+    public List<FabricPeer> getFabricPeerList(){
+        List<FabricPeer> fabricPeerList = new ArrayList<FabricPeer>();
+        fabricPeerList.add(fabricLocal.getLocalFabricPeer());
+        FabricPeer fabricPeer2 = new FabricPeer();
+        fabricPeer2.setPeerLocation("grpc://192.168.15.129:9051");
+        fabricPeer2.setPeerName("peer0.org2.example.com");
+        fabricPeerList.add(fabricPeer2);
+        return fabricPeerList;
     }
 }

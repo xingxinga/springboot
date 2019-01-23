@@ -2,7 +2,6 @@ package com.chsoft.fabric.aop;
 
 import com.chsoft.fabric.manage.fabricUser.entity.FabricUser;
 import com.chsoft.sys.user.entity.User;
-import com.chsoft.webapp.chaincode.aop.ChaincodeCreate;
 import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;

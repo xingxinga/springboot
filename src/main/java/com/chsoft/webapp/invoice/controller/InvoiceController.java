@@ -1,8 +1,10 @@
 package com.chsoft.webapp.invoice.controller;
 
+import com.chsoft.chaincode.invoice.InvoicChaincode;
+import com.chsoft.chaincode.sys.LedgerHistory;
+import com.chsoft.chaincode.sys.QsccChaincode;
 import com.chsoft.fabric.aop.AopFabricClient;
 import com.chsoft.fabric.local.entity.FabricLocal;
-import com.chsoft.webapp.chaincode.InvoicChaincode;
 import com.chsoft.webapp.invoice.entity.Invoice;
 import com.chsoft.webapp.invoice.server.InvoicServer;
 import org.springframework.stereotype.Controller;
@@ -24,13 +26,10 @@ import java.util.List;
 public class InvoiceController {
 
     @Resource
-    private AopFabricClient aopFabricClient;
-
-    @Resource
-    private FabricLocal fabricLocal;
-
-    @Resource
     private InvoicChaincode invoicChaincode;
+
+    @Resource
+    private QsccChaincode qsccChaincode;
 
     @Resource
     private InvoicServer invoicServer;
@@ -44,8 +43,10 @@ public class InvoiceController {
     }
 
     @RequestMapping("/edit")
-    public String invoiceShow(String id,Model model) {
+    public String invoiceShow(String id,Model model) throws Exception{
         Invoice invoice = invoicServer.findInvoiceById(id);
+        List<LedgerHistory> list =  invoicChaincode.getInvoiceHistory(invoice.getInvoiceCode(),invoice.getInvoiceNo());
+        String result = qsccChaincode.getTransactionByID(invoicChaincode.getChannelName(),list.get(0).tx_id);
         model.addAttribute("invoice",invoice);
         return "invoice/edit";
     }

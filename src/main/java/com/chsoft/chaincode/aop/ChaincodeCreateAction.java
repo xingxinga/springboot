@@ -1,6 +1,5 @@
-package com.chsoft.webapp.chaincode.aop;
+package com.chsoft.chaincode.aop;
 
-import com.chsoft.fabric.manage.fabricChaincode.entity.FabricChaincode;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -15,7 +14,7 @@ public class ChaincodeCreateAction {
 
 	private ChaincodeCreate chaincodeCreate;
 
-	@Pointcut("execution(public * com.chsoft.webapp.chaincode.*.*(..))")
+	@Pointcut("execution(public * com.chsoft.chaincode.*.*.*(..))")
 	public void pointCut(){
 
 	}

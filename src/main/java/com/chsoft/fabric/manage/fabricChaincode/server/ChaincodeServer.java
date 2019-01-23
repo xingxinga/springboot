@@ -12,7 +12,11 @@ import java.util.List;
  */
 @Service
 public class ChaincodeServer {
-
+    /**
+     * 将节点上查询到的chaincode信息批量转换为FabricChaincode
+     * @param list
+     * @return
+     */
     public List<FabricChaincode> createFabricChaincode (List<Query.ChaincodeInfo> list){
         List<FabricChaincode> chaincodeList = new ArrayList<FabricChaincode>();
         for(Query.ChaincodeInfo chaincodeInfo:list){
