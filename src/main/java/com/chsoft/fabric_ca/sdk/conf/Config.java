@@ -23,6 +23,9 @@ public class Config {
 	@Value("${system.fabric_ca.local.serverInfo.caName}")
 	private String caName;
 
+	@Value("${system.fabric_ca.local.serverInfo.caCertificateFileName}")
+	private String caCertificateFileName;
+
 	private static String osName = System.getProperties().getProperty("os.name");
 	
 	public static String wrap = Config.getWrap();

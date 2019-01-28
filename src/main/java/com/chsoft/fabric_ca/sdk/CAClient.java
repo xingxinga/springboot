@@ -1,15 +1,19 @@
 package com.chsoft.fabric_ca.sdk;
 
 import com.chsoft.fabric_ca.sdk.conf.Config;
+import com.chsoft.fabric_ca.sdk.msp.ExportCert;
 import com.chsoft.fabric_ca.sdk.user.CaUser;
+import com.chsoft.webapp.util.HttpFileDownload;
 import org.hyperledger.fabric.sdk.Enrollment;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 import org.hyperledger.fabric_ca.sdk.HFCAAffiliation;
 import org.hyperledger.fabric_ca.sdk.HFCAClient;
+import org.hyperledger.fabric_ca.sdk.HFCAInfo;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -34,10 +38,10 @@ public class CAClient {
 
     @PostConstruct
     public void init() throws Exception{
-        /*initHFCAClient(config.getCaName(), config.getServerIp());
+        initHFCAClient(config.getCaName(), config.getServerIp());
         caUser.setName(config.getAdminUserName());
         caUser.setPassword(config.getAdminUserPassword());
-        caUser.setEnrollment(getEnrollment(caUser.getName(),caUser.getPassword()));*/
+        caUser.setEnrollment(getEnrollment(caUser.getName(),caUser.getPassword()));
     }
 
     public List<HFCAAffiliation> getAllAffiliation() throws Exception{
@@ -70,6 +74,10 @@ public class CAClient {
         return client.enroll(userName, password);
     }
 
+    public void downloadCertificate(HttpServletResponse response, String fileName) throws Exception{
+        HFCAInfo CAInfo = client.info();
+        HttpFileDownload.downloadByString(response,ExportCert.decoderBase64String(CAInfo.getCACertificateChain()),fileName);
+    }
 
     private void initHFCAClient(String caName,String serverIp) throws Exception {
         client = HFCAClient.createNewInstance(caName, serverIp, null);

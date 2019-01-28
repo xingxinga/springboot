@@ -46,7 +46,7 @@ public class AffiliationController {
         return "com/chsoft/fabric_ca/affiliation/edit";
     }
 
-    @RequestMapping("/create")
+    @RequestMapping("/save")
     public String create(String affiliationName,Model model) throws Exception{
         if(caClient.createAffiliation(affiliationName)){
             model.addAttribute("message","组织添加成功："+affiliationName);
