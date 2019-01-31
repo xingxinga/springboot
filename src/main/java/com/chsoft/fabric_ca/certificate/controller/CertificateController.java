@@ -1,7 +1,6 @@
 package com.chsoft.fabric_ca.certificate.controller;
 
-import com.chsoft.fabric_ca.sdk.CAClient;
-import com.chsoft.fabric_ca.sdk.conf.Config;
+import com.chsoft.fabric_ca.certificate.server.CertificateServer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,14 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 public class CertificateController {
 
     @Resource
-    private CAClient caClient;
+    private CertificateServer certificateServer;
 
-    @Resource
-    private Config config;
+
     @RequestMapping("/getCertificate")
     @ResponseBody
-    public void list(Model model, HttpServletResponse response) throws Exception{
-        caClient.downloadCertificate(response,config.getCaCertificateFileName());
+    public void getCertificate(Model model, HttpServletResponse response) throws Exception{
+        certificateServer.downloadCertificate(response);
     }
 
 }

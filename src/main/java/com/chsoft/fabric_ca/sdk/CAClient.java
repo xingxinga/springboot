@@ -1,19 +1,20 @@
 package com.chsoft.fabric_ca.sdk;
 
-import com.chsoft.fabric_ca.sdk.conf.Config;
+import com.chsoft.fabric_ca.conf.Config;
+import com.chsoft.fabric_ca.sdk.conf.Fabric_ca_config;
+import com.chsoft.fabric_ca.sdk.msp.Base64MSPBuild;
 import com.chsoft.fabric_ca.sdk.msp.ExportCert;
 import com.chsoft.fabric_ca.sdk.user.CaUser;
-import com.chsoft.webapp.util.HttpFileDownload;
 import org.hyperledger.fabric.sdk.Enrollment;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 import org.hyperledger.fabric_ca.sdk.HFCAAffiliation;
 import org.hyperledger.fabric_ca.sdk.HFCAClient;
+import org.hyperledger.fabric_ca.sdk.HFCAIdentity;
 import org.hyperledger.fabric_ca.sdk.HFCAInfo;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -70,13 +71,17 @@ public class CAClient {
 
     }
 
+    public Collection<HFCAIdentity> getIdentities() throws Exception {
+        return client.getHFCAIdentities(caUser);
+    }
+
     public Enrollment getEnrollment(String userName, String password) throws Exception{
         return client.enroll(userName, password);
     }
 
-    public void downloadCertificate(HttpServletResponse response, String fileName) throws Exception{
+    public String getCertificateString() throws Exception{
         HFCAInfo CAInfo = client.info();
-        HttpFileDownload.downloadByString(response,ExportCert.decoderBase64String(CAInfo.getCACertificateChain()),fileName);
+        return ExportCert.decoderBase64String(CAInfo.getCACertificateChain());
     }
 
     private void initHFCAClient(String caName,String serverIp) throws Exception {
@@ -101,4 +106,26 @@ public class CAClient {
         }
         return list;
     }
+
+    public String generateUserMSP(String identitieName,String identitiePassword,String root_directory) throws Exception{
+        CaUser user = new CaUser();
+        user.setEnrollment(getEnrollment(identitieName,identitiePassword));
+        user.setName(identitieName);
+        String path = root_directory;
+        HFCAAffiliation affiliation= client.getHFCAAffiliations(user);
+        while(affiliation.getChildren()!=null&&affiliation.getChildren().size()==1){
+            ArrayList<HFCAAffiliation> list = (ArrayList) affiliation.getChildren();
+            affiliation = list.get(0);
+        }
+        path = path + affiliation.getName() + Fabric_ca_config.getSeparator() + user.getName() + Fabric_ca_config.getSeparator() + "msp" + Fabric_ca_config.getSeparator();
+        buildMSP(path,user);
+        return path;
+    }
+
+    public void buildMSP(String path ,CaUser user){
+        Base64MSPBuild build = new Base64MSPBuild(path);
+        build.BuildKeystore(user.getEnrollment().getKey());
+        build.BuildSigncerts(user.getEnrollment().getCert());
+    }
+
 }

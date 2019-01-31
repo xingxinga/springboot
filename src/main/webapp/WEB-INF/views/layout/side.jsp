@@ -62,7 +62,9 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="${contextPath}/certificate/getCertificate">获取根证书</a></li>
-                        <li><a href="${contextPath}/affiliation/list">用户注册</a></li>
+                        <li><a href="${contextPath}/identitie/list">身份列表</a></li>
+                        <li><a href="${contextPath}/identitie/toRegister">身份注册</a></li>
+                        <li><a href="${contextPath}/identitie/toGetMSP">身份证书获取</a></li>
                         <li><a href="${contextPath}/affiliation/list">证书列表</a></li>
                         <li><a href="${contextPath}/affiliation/list">组织管理</a></li>
                     </ul>

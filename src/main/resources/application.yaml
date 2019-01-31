@@ -61,6 +61,9 @@ system:
           location: ""
           ordererName: ""
   fabric_ca:
+    server:
+      crtificateFile:
+        isRetrieve: "false"
     local:
       adminUser:
         name: "admin"
@@ -68,6 +71,28 @@ system:
       serverInfo:
         ip: "http://192.168.15.129:7054"
         caName: "client"
-        caCertificateFileName: "ca-cer.pem"
+      filePath:
+        liunx:
+          root_directory: "E:\\springboot\\fabric_ca\\file\\"
+          ca_certificate:
+            caCertificateFilePath: "ca\\"
+            caCertificateFileName: "ca-cer.pem"
+          identitie:
+            cacerts: "msp\\cacerts\\"
+            keystore: "msp\\keystore\\"
+            signcerts: "msp\\signcerts\\"
+            tlscacerts: "msp\\tlscacerts\\"
+            admincerts: "msp\\admincerts\\"
+        windows:
+          root_directory: "E:\\springboot\\fabric_ca\\file\\"
+          ca_certificate:
+            caCertificateFilePath: "ca\\"
+            caCertificateFileName: "ca-cer.pem"
+          identitie:
+            cacerts: "msp\\cacerts\\"
+            keystore: "msp\\keystore\\"
+            signcerts: "msp\\signcerts\\"
+            tlscacerts: "msp\\tlscacerts\\"
+            admincerts: "msp\\admincerts\\"
 
 

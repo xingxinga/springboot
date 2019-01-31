@@ -1,7 +1,7 @@
 
 package com.chsoft.fabric_ca.sdk.msp;
 
-import com.chsoft.fabric_ca.sdk.conf.Config;
+import com.chsoft.fabric_ca.sdk.conf.Fabric_ca_config;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +17,7 @@ public class Base64MSPBuild implements MSPBuild {
 		super();
 		this.msp = new FabricCaMSP(mspDirectory);
 	}
-	
+
 	@Override
 	public void BuildCacerts() {
 		// TODO Auto-generated method stub
@@ -42,9 +42,16 @@ public class Base64MSPBuild implements MSPBuild {
 	}
 
 	@Override
-	public void BuildSigncerts() {
+	public void BuildSigncerts(String certs) {
 		// TODO Auto-generated method stub
-		
+		String path = msp.mspDirectory+ Fabric_ca_config.getSeparator()+"signcerts"+ Fabric_ca_config.getSeparator();
+		File file1=new File(path);
+		file1.mkdirs();
+		try {
+			exportCert.exportCertByString(certs,path+"cer.pem");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -55,8 +62,8 @@ public class Base64MSPBuild implements MSPBuild {
 
 	public void BuildAdmincerts(String certs,String userName) {
 		// TODO Auto-generated method stub
-		try {
-			String path = msp.mspDirectory+ Config.getSeparator()+"admincerts"+Config.getSeparator();
+		/*try {
+			String path = msp.mspDirectory+ Fabric_ca_config.getSeparator()+"admincerts"+ Fabric_ca_config.getSeparator();
 			File file1=new File(path);
 			file1.mkdirs();
 			exportCert.exportCertByString(certs,path+userName+"-cer.pem");
@@ -64,7 +71,7 @@ public class Base64MSPBuild implements MSPBuild {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public void copyFile(String from,String to) throws IOException{

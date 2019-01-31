@@ -1,6 +1,6 @@
 package com.chsoft.fabric_ca.sdk.user;
 
-import com.chsoft.fabric_ca.sdk.conf.Config;
+import com.chsoft.fabric_ca.sdk.conf.Fabric_ca_config;
 import com.chsoft.fabric_ca.sdk.msp.Base64MSPBuild;
 import org.hyperledger.fabric.sdk.Enrollment;
 import org.hyperledger.fabric.sdk.User;
@@ -107,12 +107,12 @@ public class UserEnroll {
 				ArrayList<HFCAAffiliation> list = (ArrayList) affiliation.getChildren();
 				affiliation = list.get(0);
 			}
-			path = path + affiliation.getName() + Config.getSeparator();
+			path = path + affiliation.getName() + Fabric_ca_config.getSeparator();
 		} catch(Exception e){
 			
 		}
 		finally{
-			path = path + user.getName() + Config.getSeparator() + "msp" + Config.getSeparator();
+			path = path + user.getName() + Fabric_ca_config.getSeparator() + "msp" + Fabric_ca_config.getSeparator();
 			Base64MSPBuild build = new Base64MSPBuild(path);
 			build.BuildKeystore(user.getEnrollment().getKey());
 			build.BuildAdmincerts(user.getEnrollment().getCert(), user.getName());

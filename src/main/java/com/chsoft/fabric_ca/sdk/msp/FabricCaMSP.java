@@ -1,6 +1,6 @@
 package com.chsoft.fabric_ca.sdk.msp;
 
-import com.chsoft.fabric_ca.sdk.conf.Config;
+import com.chsoft.fabric_ca.sdk.conf.Fabric_ca_config;
 
 import java.io.File;
 
@@ -19,15 +19,15 @@ public class FabricCaMSP extends MSP{
 	public FabricCaMSP(String mspDirectory) {
 		super(mspDirectory);
 
-		cacerts = mspDirectory+"cacerts"+Config.separator;
+		cacerts = mspDirectory+"cacerts"+ Fabric_ca_config.separator;
 		
-		intermediatecerts = mspDirectory+"intermediatecerts"+Config.separator;
+		intermediatecerts = mspDirectory+"intermediatecerts"+ Fabric_ca_config.separator;
 		
-		keystore = mspDirectory+"keystore"+ Config.separator;
+		keystore = mspDirectory+"keystore"+ Fabric_ca_config.separator;
 		
-		signcerts = mspDirectory+"signcerts"+Config.separator;
+		signcerts = mspDirectory+"signcerts"+ Fabric_ca_config.separator;
 		
-		tlscacerts = mspDirectory+"tlscacerts"+Config.separator;
+		tlscacerts = mspDirectory+"tlscacerts"+ Fabric_ca_config.separator;
 		
 		File file1=new File(cacerts);
 		file1.mkdirs();

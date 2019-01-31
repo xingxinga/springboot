@@ -19,7 +19,7 @@ public interface MSPBuild {
 	public void BuildKeystore(PrivateKey privateKey);
 	
 	//生成被组织根证书签名，验证本节点签名的证书
-	public void BuildSigncerts();
+	public void BuildSigncerts(String certs);
 	
 	//生成TLS证书
 	public void BuildTlscacerts();

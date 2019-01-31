@@ -5,15 +5,12 @@ import java.security.Key;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-import com.chsoft.fabric_ca.sdk.conf.Config;
-import org.apache.commons.codec.binary.Base64;
+import com.chsoft.fabric_ca.sdk.conf.Fabric_ca_config;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 public class ExportCert {
-	
+
 	 /**
      * 得到密钥字符串（经过base64编码）
      * @return
@@ -30,9 +27,9 @@ public class ExportCert {
         BASE64Encoder encoder = new BASE64Encoder();
         String encoded = encoder.encode(privateKey.getEncoded());
         FileWriter fw = new FileWriter(exportFile);  
-        fw.write("-----BEGIN PRIVATE KEY-----"+Config.wrap);  //非必须  
+        fw.write("-----BEGIN PRIVATE KEY-----"+ Fabric_ca_config.wrap);  //非必须
         fw.write(encoded);  
-        fw.write(Config.wrap+"-----END PRIVATE KEY-----");        //非必须
+        fw.write(Fabric_ca_config.wrap+"-----END PRIVATE KEY-----");        //非必须
         fw.close();   
     	/*BASE64Encoder encoder = new BASE64Encoder();  
         String encoded = encoder.encode(privateKey.getEncoded()); 
@@ -46,9 +43,9 @@ public class ExportCert {
         BASE64Encoder encoder = new BASE64Encoder();  
         String encoded = encoder.encode(publicKey.getEncoded());  
         FileWriter fw = new FileWriter(exportFile);  
-        fw.write("-----BEGIN PUBLIC KEY-----"+Config.wrap);       //非必须
+        fw.write("-----BEGIN PUBLIC KEY-----"+ Fabric_ca_config.wrap);       //非必须
         fw.write(encoded);  
-        fw.write(Config.wrap+"-----END PUBLIC KEY-----");     //非必须
+        fw.write(Fabric_ca_config.wrap+"-----END PUBLIC KEY-----");     //非必须
         fw.close();  
     }
 
